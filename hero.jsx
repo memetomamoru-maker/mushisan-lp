@@ -122,7 +122,7 @@ const Hero = () => {
       <ForestBg />
       <div className="container hero-grid" style={{position:'relative',zIndex:1}}>
         <div>
-          <span className="hero-kicker">{mode==='kid' ? '小学生むけ 0えん さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
+          <span className="hero-kicker">{mode==='kid' ? '小学生むけ さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
           <h1>
             {mode === 'kid'
               ? <><span style={{whiteSpace:'nowrap'}}>むしをあつめながら、</span><br/><span className="hl" style={{whiteSpace:'nowrap'}}>さんすうをまなぼう！</span></>
@@ -135,14 +135,14 @@ const Hero = () => {
           </p>
           <div className="hero-ctas">
             <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="btn-primary">
-              {mode==='kid' ? 'いますぐ 0えんで あそぶ' : 'いますぐ無料で遊ぶ'}
+              {mode==='kid' ? 'いますぐ あそぶ' : 'いますぐ無料で遊ぶ'}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#flow" className="btn-secondary">{mode==='kid' ? 'あそびかたをみる' : 'あそびかたを見る'}</a>
           </div>
           <div className="hero-meta">
             {(mode==='kid'
-              ? [['ずっと0えん','free'],['こうこくなし','noAd'],['アプリいらない','check'],['むし100しゅ','book']]
+              ? [['すぐあそべる','check'],['ガチャができる','gacha'],['ずかんをうめる','book'],['むし100しゅ','sprout']]
               : [['完全無料','free'],['広告なし','noAd'],['アプリ不要','check'],['100種の虫','book']]
             ).map(([label,icon])=>(
               <div key={label} className="hero-badge">

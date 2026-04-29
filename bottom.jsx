@@ -1,7 +1,7 @@
 // FAQ + CTA + Footer
 const FAQ = () => {
   const items = [
-    { q:'本当にずっと無料ですか？', a:'はい。完全無料で、アプリ内課金や有料プランは一切ありません。広告表示もありません。' },
+    { q:'料金はかかりますか？', a:'いいえ。利用料金、アプリ内課金、有料プランはありません。広告表示もありません。' },
     { q:'アプリのインストールは必要ですか？', a:'不要です。ブラウザからmushisan.vercel.appにアクセスするだけで遊べます。スマホ・タブレット・PCすべてに対応しています。' },
     { q:'個人情報の登録は必要ですか？', a:'ニックネーム（最大10文字）と学年の入力のみです。メールアドレスや氏名など個人情報は一切登録しません。ニックネームはお使いの端末にのみ保存されます。' },
     { q:'対象年齢は？', a:'小学生（6〜12歳）向けです。学年表示は目安で、お子さまの理解度に合わせて難易度を選べます。' },
@@ -69,7 +69,7 @@ const FinalCTA = () => {
             {mode === 'kid' ? <>
               <span className="sec-label">むしを、あつめよう</span>
               <h2>さんすうにこたえて、<br/><span className="hl">ずかんをうめよう！</span></h2>
-              <p>インストールなし・とうろくなし。URLをひらけばすぐにぼうけんがはじまるよ。</p>
+              <p>URLをひらくと、すぐにぼうけんがはじまるよ。むしをあつめて、ずかんをいっぱいにしよう。</p>
             </> : <>
               <span className="sec-label">今すぐ始める</span>
               <h2>無料で、今日から<br/><span className="hl">始められます。</span></h2>
@@ -77,7 +77,7 @@ const FinalCTA = () => {
             </>}
             <div className="cta-actions">
               <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="btn-primary cta-main-btn">
-                {mode === 'kid' ? 'いますぐ 0えんで あそぶ' : 'いますぐ無料で遊ぶ'}
+                {mode === 'kid' ? 'いますぐ あそぶ' : 'いますぐ無料で遊ぶ'}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
               <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="cta-url">mushisan.vercel.app</a>
