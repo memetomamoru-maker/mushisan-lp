@@ -785,8 +785,8 @@ section { padding: 72px 0; }
   background: radial-gradient(ellipse 700px 400px at 50% 50%, rgba(74,125,82,0.12), transparent);
 }
 .cta-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
+  display: grid; grid-template-columns: 1fr minmax(0, 1fr);
+  gap: 48px; align-items: center;
   position: relative; z-index: 1;
 }
 .cta-text h2 { font-size: clamp(30px,4vw,50px); margin-bottom:16px; }

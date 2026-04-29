@@ -55,7 +55,7 @@ const FinalCTA = () => {
       {/* subtle green glow */}
       <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 600px 400px at 50% 50%, rgba(45,122,45,0.08), transparent)',pointerEvents:'none'}}/>
       <div className="container" style={{position:'relative',zIndex:1}}>
-        <div style={{display:'grid',gridTemplateColumns:'1fr minmax(0,480px)',gap:40,alignItems:'center'}}>
+        <div className="cta-inner">
           {/* Left — copy */}
           <div>
             {mode === 'kid' ? <>
@@ -78,7 +78,7 @@ const FinalCTA = () => {
           </div>
 
           {/* Right — game collection UI */}
-          <div style={{overflow:'hidden',minWidth:0,width:'100%'}}>
+          <div style={{minWidth:0,overflow:'hidden'}}>
             {/* Header bar */}
             <div style={{
               background:'linear-gradient(180deg, #0f2010, #0a1a0b)',
