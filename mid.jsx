@@ -32,7 +32,15 @@ const Dex = () => {
   const rarColor = {N:'var(--rar-n)',R:'var(--rar-r)',SR:'var(--rar-sr)',SSR:'var(--rar-ssr)'};
   const [selectedIdx, setSelectedIdx] = React.useState(2); // herc default (index 2 = herc in showcase)
   const [fading, setFading] = React.useState(false);
+  const [changed, setChanged] = React.useState(false);
   const [hoveredIdx, setHoveredIdx] = React.useState(null);
+  const fadeTimer = React.useRef(null);
+  const changedTimer = React.useRef(null);
+
+  React.useEffect(() => () => {
+    if (fadeTimer.current) clearTimeout(fadeTimer.current);
+    if (changedTimer.current) clearTimeout(changedTimer.current);
+  }, []);
 
   const kidCond = (cond) => mode === 'kid'
     ? String(cond).replace('ガチャ', 'ガチャでゲット')
@@ -40,8 +48,13 @@ const Dex = () => {
 
   const selectBug = (i) => {
     if (i === selectedIdx || i > LOCKED_AFTER) return;
+    if (fadeTimer.current) clearTimeout(fadeTimer.current);
+    if (changedTimer.current) clearTimeout(changedTimer.current);
+    setSelectedIdx(i);
     setFading(true);
-    setTimeout(() => { setSelectedIdx(i); setFading(false); }, 220);
+    setChanged(true);
+    fadeTimer.current = setTimeout(() => setFading(false), 180);
+    changedTimer.current = setTimeout(() => setChanged(false), 950);
   };
 
   const selKey = showcase[selectedIdx];
@@ -63,7 +76,7 @@ const Dex = () => {
           <div className="dex-pages">
 
             {/*  Left page: selected bug detail  */}
-            <div className="dex-page">
+            <div className="dex-page dex-detail-page">
               <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} ｜ {mode==='kid' ? 'ずかんページ' : '図鑑ページ'}</div>
               <div className="dex-featured" style={{opacity:fading?0:1,transition:'opacity 0.22s'}}>
                 <div className="dex-featured-img" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
@@ -84,8 +97,21 @@ const Dex = () => {
             </div>
 
             {/*  Right page: collection grid  */}
-            <div className="dex-page">
+            <div className="dex-page dex-grid-page">
               <div className="dex-page-title">{mode==='kid' ? 'あつめたむし' : 'コレクション'} ｜ {LOCKED_AFTER+1} / 100しゅ</div>
+              <div
+                key={selKey}
+                id="dex-current-card"
+                className={"dex-mobile-current" + (changed ? ' just-changed' : '') + (fading ? ' is-changing' : '')}
+                aria-live="polite"
+              >
+                <div className="dex-mobile-current-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
+                <div className="dex-mobile-current-text">
+                  <strong>{changed ? (mode==='kid' ? 'ページがかわったよ' : 'ページを切り替えました') : (mode==='kid' ? 'いま みているむし' : '現在表示中')}</strong>
+                  <span>{meta.jp}</span>
+                  <em style={{color:rarColor[meta.rar]||'var(--rar-n)'}}>{meta.rar} {'★'.repeat(meta.rar==='SSR'?6:meta.rar==='SR'?5:meta.rar==='R'?4:3)}</em>
+                </div>
+              </div>
               <div className="dex-mini-grid" style={{gridTemplateColumns:'repeat(5,1fr)'}}>
                 {showcase.map((k, i) => {
                   const locked = i > LOCKED_AFTER;
@@ -137,13 +163,6 @@ const Dex = () => {
                     </button>
                   );
                 })}
-              </div>
-              <div key={selKey} className={"dex-mobile-result" + (fading ? ' is-changing' : '')} aria-live="polite">
-                <div className="dex-mobile-result-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
-                <div>
-                  <strong>{mode==='kid' ? 'いまのページ' : '現在のページ'}</strong>
-                  <span>{meta.jp}</span>
-                </div>
               </div>
               <div style={{marginTop:14,background:'var(--bg-4)',padding:'10px 14px',borderRadius:'var(--radius-sm)',fontSize:12,color:'var(--text-2)',lineHeight:1.6}}>
                 <strong style={{color:'var(--gold-6)'}}>★ ふしぎなひみつ</strong><br/>

@@ -27,7 +27,7 @@ const Nav = () => {
 };
 
 const ForestBg = () => (
-  <div style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none',zIndex:0}}>
+  <div className="forest-bg" style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none',zIndex:0}}>
     {/* Sky */}
     <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,#0a1e0a 0%,#0d2b0d 40%,#0a1e0a 100%)'}}/>
     {/* Moon */}
