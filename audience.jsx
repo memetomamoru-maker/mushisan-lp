@@ -2,15 +2,15 @@
 const Rarity = () => {
   const { mode } = React.useContext(window.ModeContext);
   const items = mode === 'kid' ? [
-    { cls:'n',  badge:'N　ノーマル',      count:58, examples:'アリ・バッタ・クモ・ダンゴムシなど、みぢかなむし。' },
-    { cls:'r',  badge:'R　レア',          count:30, examples:'アゲハチョウ・ホタル・タマムシなど、なかなかであえないむし。' },
-    { cls:'sr', badge:'SR　スーパーレア', count:8,  examples:'カブトムシ・ヘラクレスなど、だいにんきのおおきなむし。' },
-    { cls:'ssr',badge:'SSR　でんせつ',    count:4,  examples:'ヘラクレス・アトラスなど。すごくめずらしい！' },
+    { cls:'n',  badge:'N　ノーマル',      count:58, rate:'65%', examples:'アリ・バッタ・クモ・ダンゴムシなど、みぢかなむし。' },
+    { cls:'r',  badge:'R　レア',          count:30, rate:'25%', examples:'アゲハチョウ・ホタル・タマムシなど、なかなかであえないむし。' },
+    { cls:'sr', badge:'SR　スーパーレア', count:8,  rate:'7%',  examples:'カブトムシ・ヘラクレスなど、だいにんきのおおきなむし。' },
+    { cls:'ssr',badge:'SSR　でんせつ',    count:4,  rate:'3%',  examples:'ヘラクレス・アトラスなど。すごくめずらしい！' },
   ] : [
-    { cls:'n',  badge:'N　ノーマル',         count:58, examples:'アリ・バッタ・クモ・ダンゴムシなど、身近な虫。' },
-    { cls:'r',  badge:'R　レア',             count:30, examples:'アゲハチョウ・ホタル・タマムシなど、なかなか出会えない虫。' },
-    { cls:'sr', badge:'SR　スーパーレア',    count:8,  examples:'カブトムシ・ヘラクレスなど、大人気の大型甲虫。' },
-    { cls:'ssr',badge:'SSR　でんせつ',       count:4,  examples:'ヘラクレス・アトラス・アレキサンドラなど。きわめてレア！' },
+    { cls:'n',  badge:'N　ノーマル',         count:58, rate:'65%', examples:'アリ・バッタ・クモ・ダンゴムシなど、身近な虫。' },
+    { cls:'r',  badge:'R　レア',             count:30, rate:'25%', examples:'アゲハチョウ・ホタル・タマムシなど、なかなか出会えない虫。' },
+    { cls:'sr', badge:'SR　スーパーレア',    count:8,  rate:'7%',  examples:'カブトムシ・ヘラクレスなど、大人気の大型甲虫。' },
+    { cls:'ssr',badge:'SSR　でんせつ',       count:4,  rate:'3%',  examples:'ヘラクレス・アトラス・アレキサンドラなど。きわめてレア！' },
   ];
 
   return (

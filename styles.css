@@ -177,8 +177,8 @@ button, [role=button] { cursor: pointer !important; }
 
 /* ===== Hero ===== */
 .hero {
-  padding: 100px 0 160px;
-  min-height: 92vh;
+  padding: 100px 0 80px;
+  min-height: 80vh;
   display: flex; flex-direction: column; justify-content: center;
   background: var(--bg-0);
   position: relative; overflow: hidden;
@@ -219,7 +219,7 @@ button, [role=button] { cursor: pointer !important; }
 .hero-lead {
   font-size: 16px; color: var(--leaf-8);
   margin-bottom: 32px;
-  text-wrap: pretty; max-width: 520px;
+  text-wrap: pretty; max-width: 560px;
   line-height: 1.85;
 }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
@@ -285,7 +285,7 @@ button, [role=button] { cursor: pointer !important; }
 }
 
 /* ===== Shared section ===== */
-section { padding: 96px 0; }
+section { padding: 72px 0; }
 .sec-label {
   font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
   color: var(--leaf-5); text-transform: uppercase; margin-bottom: 10px;
@@ -401,7 +401,7 @@ section { padding: 96px 0; }
   background-position: -60px center;
 }
 .features > * { position: relative; z-index: 1; }
-.feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: start; }
 .feature-card {
   background: var(--bg-3);
   border: 1px solid var(--bg-5);
@@ -409,6 +409,7 @@ section { padding: 96px 0; }
   padding: 36px 28px;
   transition: border-color 0.2s, transform 0.2s;
   position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
 }
 .feature-card::before {
   content: '';

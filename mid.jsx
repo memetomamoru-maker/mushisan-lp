@@ -150,7 +150,7 @@ const ParentSection = () => {
       <div className="container">
         <div className="sec-head">
           <span className="sec-label">For Parents</span>          <h2 className="sec-title">保護者の方へ</h2>
-          <p className="sec-lead">小学校全学年（6〜12歳）を対象とした算数学習アプリです。ゲームを通じて計算力を楽しく練習できます。</p>
+          <p className="sec-lead">小学生（6〜12歳）向けの算数学習アプリです。学年表示は目安で、お子さまの理解度に合わせて難易度を選べます。ゲームを通じて計算力を楽しく練習できます。</p>
         </div>
         <div className="parent-grid">
           <div className="parent-card">
