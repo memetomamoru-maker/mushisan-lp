@@ -104,7 +104,7 @@ const FinalCTA = () => {
                           className="collection-cell"
                           style={{'--cell-accent': rarColor[k] || '#4aaa4a', '--cell-glow': (rarColor[k] || '#4aaa4a') + '33'}}
                         >
-                          <div className="collection-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[k]}} />
+                          <div className="collection-bug" dangerouslySetInnerHTML={{__html: window.getInsectSVG(k, 'collection')}} />
                         </div>
                       );
                     })}
@@ -127,7 +127,7 @@ const Footer = () => (
   <footer>
     <div className="container footer-inner">
       <div className="footer-logo">
-        <div className="footer-logo-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG.kabuto}}/>
+        <div className="footer-logo-bug" dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'footer')}}/>
         <span>ムシ算</span>
       </div>
       <div className="footer-links">

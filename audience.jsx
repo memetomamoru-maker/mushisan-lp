@@ -34,9 +34,10 @@ const Rarity = () => {
               <div style={{display:'flex',justifyContent:'center',gap:4,marginBottom:12}}>
                 {Array.from({length:Math.min(3,Math.floor(it.count/10)+1)}).map((_,i)=>(
                   <div key={i} style={{width:36,height:36,padding:3,background:'var(--bg-4)',borderRadius:8}}
-                    dangerouslySetInnerHTML={{__html: window.INSECT_SVG[
-                      ['ant','batta','dango','ageha','lady','firefly','kabuto','herc','morpho','actaeon','atlas','herc'][it.cls==='n'?i:it.cls==='r'?i+3:it.cls==='sr'?i+6:i+9] || 'kabuto'
-                    ]}}/>
+                    dangerouslySetInnerHTML={{__html: window.getInsectSVG(
+                      ['ant','batta','dango','ageha','lady','firefly','kabuto','herc','morpho','actaeon','atlas','herc'][it.cls==='n'?i:it.cls==='r'?i+3:it.cls==='sr'?i+6:i+9] || 'kabuto',
+                      'rarity'
+                    )}}/>
                 ))}
               </div>
               <div className="rarity-examples">{it.examples}</div>

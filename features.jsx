@@ -128,7 +128,7 @@ const Features = () => {
         </div>
         <div className="feat-panel">
           <div className="feat-panel-visual">
-            <div className="feat-bug-circle" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[cur.bug]}}/>
+            <div className="feat-bug-circle" dangerouslySetInnerHTML={{__html: window.getInsectSVG(cur.bug, 'feature')}}/>
             <div className="feat-chips">
               {cur.chips.map(c => <span key={c} className="chip">{c}</span>)}
             </div>

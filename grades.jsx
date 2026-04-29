@@ -41,7 +41,7 @@ const Grades = () => {
               <div className="grade-preview-bugs">
                 {g.bugs.map(b=>(
                   <div key={b} className="grade-bug-card">
-                    <div style={{width:'70%'}} dangerouslySetInnerHTML={{__html: window.INSECT_SVG[b]}}/>
+                    <div style={{width:'70%'}} dangerouslySetInnerHTML={{__html: window.getInsectSVG(b, 'grade')}}/>
                     <div style={{marginTop:4}}>{window.BUG_META[b]?.jp || b}</div>
                   </div>
                 ))}

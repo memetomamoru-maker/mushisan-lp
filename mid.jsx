@@ -79,7 +79,7 @@ const Dex = () => {
             <div className="dex-page dex-detail-page">
               <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} ｜ {mode==='kid' ? 'ずかんページ' : '図鑑ページ'}</div>
               <div className="dex-featured" style={{opacity:fading?0:1,transition:'opacity 0.22s'}}>
-                <div className="dex-featured-img" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
+                <div className="dex-featured-img" dangerouslySetInnerHTML={{__html: window.getInsectSVG(selKey, 'dex-featured')}}/>
                 <h4>{meta.jp}</h4>
                 <div className="sub">{meta.en}</div>
                 <div className="rarity-line" style={{color:rarColor[meta.rar]||'var(--rar-n)'}}>
@@ -105,7 +105,7 @@ const Dex = () => {
                 className={"dex-mobile-current" + (changed ? ' just-changed' : '') + (fading ? ' is-changing' : '')}
                 aria-live="polite"
               >
-                <div className="dex-mobile-current-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
+                <div className="dex-mobile-current-bug" dangerouslySetInnerHTML={{__html: window.getInsectSVG(selKey, 'dex-mobile')}}/>
                 <div className="dex-mobile-current-text">
                   <strong>{changed ? (mode==='kid' ? 'ページがかわったよ' : 'ページを切り替えました') : (mode==='kid' ? 'いま みているむし' : '現在表示中')}</strong>
                   <span>{meta.jp}</span>
@@ -143,7 +143,7 @@ const Dex = () => {
                     >
                       {locked
                         ? <span style={{color:'var(--text-3)',fontWeight:900,fontSize:16}}>?</span>
-                        : <div style={{width:'88%'}} dangerouslySetInnerHTML={{__html: window.INSECT_SVG[k]}}/>
+                        : <div style={{width:'88%'}} dangerouslySetInnerHTML={{__html: window.getInsectSVG(k, 'dex-grid')}}/>
                       }
                       {isSelected && !locked && (
                         <span className="dex-mini-selected-label">{mode==='kid' ? 'みてる' : '選択中'}</span>

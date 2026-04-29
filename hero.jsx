@@ -6,7 +6,7 @@ const Nav = () => {
     <nav className="nav">
       <div className="container nav-inner">
         <a href="#top" className="logo">
-          <span className="logo-badge" dangerouslySetInnerHTML={{__html: window.INSECT_SVG.kabuto}} />
+          <span className="logo-badge" dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'hero-logo')}} />
           <span>ムシ算<span className="logo-sub">MUSHISAN</span></span>
         </a>
         <div className="audience-toggle">
@@ -108,7 +108,7 @@ const ForestBg = () => (
         transform:`rotate(${rot}deg)`,opacity:op,
         filter:'brightness(0) invert(0.35) sepia(1) hue-rotate(70deg)',
         animation:`silhouetteFloat 8s ease-in-out ${delay}s infinite`,
-      }} dangerouslySetInnerHTML={{__html: window.INSECT_SVG[bug]}}/>
+      }} dangerouslySetInnerHTML={{__html: window.getInsectSVG(bug, 'hero-float')}}/>
     ))}
     {/* Moonlight patches */}
     <div style={{position:'absolute',top:'8%',left:'38%',width:260,height:260,background:'radial-gradient(circle,rgba(168,216,168,0.07) 0%,transparent 70%)',borderRadius:'50%'}}/>
@@ -236,7 +236,7 @@ const PhoneMock = () => (
       {/* Partner bug */}
       <div style={{margin:'14px 12px 0',padding:'10px 12px',background:'rgba(255,255,255,0.06)',borderRadius:16,border:'1px solid rgba(255,255,255,0.1)',display:'flex',alignItems:'center',gap:10,position:'relative',zIndex:1}}>
         <div style={{width:44,height:44,flexShrink:0,background:'rgba(255,255,255,0.08)',borderRadius:'50%',padding:4}}
-          dangerouslySetInnerHTML={{__html: window.INSECT_SVG.kabuto}}/>
+          dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'hero-phone')}}/>
         <div>
           <div style={{fontSize:9,color:'#FFD060',fontWeight:900,marginBottom:1}}>あいぼう</div>
           <div style={{fontWeight:900,color:'#fff',fontSize:13}}>カブトムシ</div>
