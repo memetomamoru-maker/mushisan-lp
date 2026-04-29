@@ -1,6 +1,13 @@
 // FAQ + CTA + Footer
 const FAQ = () => {
-  const items = [
+  const { mode } = React.useContext(window.ModeContext);
+  const items = mode === 'kid' ? [
+    { q:'おかねはかかる？', a:'かかりません。ゲームのなかでおかねをはらうところも、こうこくもありません。' },
+    { q:'アプリをいれるの？', a:'いりません。ブラウザでページをひらくだけであそべます。' },
+    { q:'ほんとうのなまえはいる？', a:'いりません。ニックネームだけであそべます。メールアドレスもいりません。' },
+    { q:'どのくらいのこがあそべる？', a:'しょうがくせいむけです。かんたんなもんだいから、むずかしいもんだいまであります。' },
+    { q:'おとはけせる？', a:'タイトルがめんで「BGMなしではじめる」をえらべます。' },
+  ] : [
     { q:'料金はかかりますか？', a:'いいえ。利用料金、アプリ内課金、有料プランはありません。広告表示もありません。' },
     { q:'アプリのインストールは必要ですか？', a:'不要です。ブラウザからmushisan.vercel.appにアクセスするだけで遊べます。スマホ・タブレット・PCすべてに対応しています。' },
     { q:'個人情報の登録は必要ですか？', a:'ニックネーム（最大10文字）と学年の入力のみです。メールアドレスや氏名など個人情報は一切登録しません。ニックネームはお使いの端末にのみ保存されます。' },
@@ -21,7 +28,7 @@ const FAQ = () => {
       <div className="container">
         <div className="sec-head center">
           <span className="sec-label">FAQ</span>
-          <h2 className="sec-title">よくある質問</h2>
+          <h2 className="sec-title">{mode === 'kid' ? 'よくあるしつもん' : 'よくある質問'}</h2>
         </div>
         <div className="faq-list">
           {items.map((it, i) => {

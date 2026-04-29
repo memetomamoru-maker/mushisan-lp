@@ -41,7 +41,7 @@ const Rarity = () => {
                 ))}
               </div>
               <div className="rarity-examples">{it.examples}</div>
-              {it.rate !== '｜' && <div style={{marginTop:8,fontSize:11,fontWeight:700,color:'var(--text-3)'}}>排出率 {it.rate}</div>}
+              {it.rate !== '｜' && <div style={{marginTop:8,fontSize:11,fontWeight:700,color:'var(--text-3)'}}>{mode==='kid' ? 'でやすさ' : '排出率'} {it.rate}</div>}
             </div>
           ))}
         </div>
@@ -55,7 +55,7 @@ const LevelSystem = () => {
   const grades = mode === 'kid' ? [
     { icon:'plant1', grade:'1ねんせいレベル（やさしい）', topics:'1けたのたしざん・ひきざん', pts:'+5pt / もん' },
     { icon:'plant1', grade:'2〜3ねんせいレベル',          topics:'かけざん・わりざん・2けたのけいさん', pts:'+7〜9pt / もん' },
-    { icon:'plant1', grade:'高学年レベル（むずかしい）', topics:'しょうすう・ぶんすう・はやさのもんだい', pts:'+11〜15pt / もん' },
+    { icon:'plant1', grade:'こうがくねんレベル（むずかしい）', topics:'しょうすう・ぶんすう・はやさのもんだい', pts:'+11〜15pt / もん' },
   ] : [
     { icon:'plant1', grade:'1年生レベル（やさしい）',  topics:'1けたのたしざん・ひきざん',          pts:'+5pt / もん' },
     { icon:'plant1', grade:'2〜3年生レベル',           topics:'かけざん・わりざん・2けたの計算',    pts:'+7〜9pt / もん' },
@@ -82,7 +82,7 @@ const LevelSystem = () => {
             ? 'ちょうどいいむずかしさに、じどうでかわるよ。'
             : 'ちょうどいい難しさに、自動で調整される。'}</h2>
           <p className="sec-lead">{mode==='kid'
-            ? '小学生むけ。やさしいもんだいからむずかしいもんだいまで、じぶんでえらべるよ。'
+            ? 'しょうがくせいむけ。やさしいもんだいからむずかしいもんだいまで、じぶんでえらべるよ。'
             : '小学生向けの幅広い難易度に対応。理解度に合わせて問題を選べる。'}</p>
         </div>
         <div className="level-grid">

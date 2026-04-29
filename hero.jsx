@@ -11,13 +11,13 @@ const Nav = () => {
         </a>
         <div className="audience-toggle">
           <button type="button" className={"aud-btn" + (mode==='kid'?' active':'')} onClick={()=>setMode('kid')}>こどもへ</button>
-          <button type="button" className={"aud-btn" + (mode==='parent'?' active':'')} onClick={()=>setMode('parent')}>おうちの人へ</button>
+          <button type="button" className={"aud-btn" + (mode==='parent'?' active':'')} onClick={()=>setMode('parent')}>{mode==='kid' ? 'おうちのひとへ' : 'おうちの人へ'}</button>
         </div>
         <div className="nav-links">
           <a href="#flow">あそびかた</a>
           <a href="#features">とくちょう</a>
           <a href="#dex">{mode==='kid' ? 'むしずかん' : '虫図鑑'}</a>
-          <a href="#parent">{mode==='kid' ? 'おうちの人へ' : '保護者の方へ'}</a>
+          <a href="#parent">{mode==='kid' ? 'おうちのひとへ' : '保護者の方へ'}</a>
           <a href="#faq">{mode==='kid' ? 'しつもん' : 'FAQ'}</a>
           <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="nav-cta">{mode==='kid' ? 'いますぐあそぶ' : 'いますぐ遊ぶ'}</a>
         </div>
@@ -122,7 +122,7 @@ const Hero = () => {
       <ForestBg />
       <div className="container hero-grid" style={{position:'relative',zIndex:1}}>
         <div>
-          <span className="hero-kicker">{mode==='kid' ? '小学生むけ さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
+          <span className="hero-kicker">{mode==='kid' ? 'しょうがくせいむけ さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
           <h1>
             {mode === 'kid'
               ? <>

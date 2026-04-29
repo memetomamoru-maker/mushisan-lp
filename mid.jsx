@@ -46,6 +46,29 @@ const Dex = () => {
     ? String(cond).replace('ガチャ', 'ガチャでゲット')
     : cond;
 
+  const kidMetaOverrides = {
+    bee:       { habitat:'はなばたけ' },
+    lady:      { habitat:'くさむら' },
+    dragonfly: { habitat:'いけのそば' },
+    firefly:   { habitat:'きれいなかわのそば' },
+    mantis:    { habitat:'くさむら' },
+    batta:     { habitat:'くさむら' },
+    cicada:    { habitat:'きのみき' },
+    ant:       { habitat:'どこでも' },
+    dango:     { habitat:'おちばのした' },
+    snail:     { habitat:'はっぱ' },
+    kok:       { habitat:'くさむら' },
+    cricket:   { habitat:'くさむら' },
+    kabuto:    { habitat:'クヌギばやし' },
+    miyama:    { habitat:'やまのぞうきばやし' },
+    herc:      { habitat:'ねったいうりん（ちゅうなんべい）' },
+    ageha:     { habitat:'はなばたけ・こうえん', size:'はねのながさ 6cm' },
+    morpho:    { habitat:'ねったいうりん（みなみアメリカ）', size:'はねのながさ 10cm' },
+    jewelbug:  { habitat:'エノキのあるもり' },
+    atlas:     { habitat:'とうなんアジア' },
+    actaeon:   { habitat:'みなみアメリカ' },
+  };
+
   const selectBug = (i) => {
     if (i === selectedIdx || i > LOCKED_AFTER) return;
     if (fadeTimer.current) clearTimeout(fadeTimer.current);
@@ -58,7 +81,8 @@ const Dex = () => {
   };
 
   const selKey = showcase[selectedIdx];
-  const meta = allMeta[selKey] || { jp: selKey, en: selKey, rar:'N', habitat:'｜', size:'｜', cond:'ガチャ（N）' };
+  const baseMeta = allMeta[selKey] || { jp: selKey, en: selKey, rar:'N', habitat:'｜', size:'｜', cond:'ガチャ（N）' };
+  const meta = mode === 'kid' ? { ...baseMeta, ...(kidMetaOverrides[selKey] || {}) } : baseMeta;
 
   return (
     <section className="dex" id="dex">
@@ -186,7 +210,7 @@ const ParentSection = () => {
     <section className="parent-sec" id="parent">
       <div className="container">
         <div className="sec-head">
-          <span className="sec-label">For Parents</span>          <h2 className="sec-title">保護者の方へ</h2>
+          <span className="sec-label">{mode === 'kid' ? 'おうちのひとへ' : 'For Parents'}</span>          <h2 className="sec-title">{mode === 'kid' ? 'おうちのひとへ' : '保護者の方へ'}</h2>
           <p className="sec-lead">小学生（6〜12歳）向けの算数学習アプリです。学年表示は目安で、お子さまの理解度に合わせて難易度を選べます。ゲームを通じて計算力を楽しく練習できます。</p>
         </div>
         <div className="parent-grid">
