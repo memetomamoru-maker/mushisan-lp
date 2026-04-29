@@ -49,8 +49,6 @@ const FAQ = () => {
 
 const FinalCTA = () => {
   const { mode } = React.useContext(window.ModeContext);
-  const [hovered, setHovered] = React.useState(null);
-
   const rows = [
     ['kabuto','miyama','herc','atlas'],
     ['ageha','morpho','jewelbug','firefly'],
@@ -79,7 +77,7 @@ const FinalCTA = () => {
             </>}
             <div className="cta-actions">
               <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="btn-primary cta-main-btn">
-                いますぐ無料で遊ぶ
+                {mode === 'kid' ? 'いますぐ 0えんで あそぶ' : 'いますぐ無料で遊ぶ'}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
               <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="cta-url">mushisan.vercel.app</a>
@@ -87,6 +85,7 @@ const FinalCTA = () => {
           </div>
 
           <div className="collection-preview" aria-hidden="true">
+            <div className="collection-caption">{mode === 'kid' ? 'ゲームであつめる ごほうび' : 'ゲーム内の図鑑イメージ'}</div>
             <div className="collection-card">
               <div className="collection-head">
                 <span className="collection-title">
@@ -99,15 +98,11 @@ const FinalCTA = () => {
                 {rows.map((row, ri) => (
                   <div key={ri} className="collection-row">
                     {row.map((k, ci) => {
-                      const idx = ri * 4 + ci;
-                      const isH = hovered === idx;
                       return (
                         <div
                           key={k}
-                          className={"collection-cell" + (isH ? ' is-hovered' : '')}
+                          className="collection-cell"
                           style={{'--cell-accent': rarColor[k] || '#4aaa4a', '--cell-glow': (rarColor[k] || '#4aaa4a') + '33'}}
-                          onMouseEnter={() => setHovered(idx)}
-                          onMouseLeave={() => setHovered(null)}
                         >
                           <div className="collection-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[k]}} />
                         </div>

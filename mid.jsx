@@ -34,6 +34,10 @@ const Dex = () => {
   const [fading, setFading] = React.useState(false);
   const [hoveredIdx, setHoveredIdx] = React.useState(null);
 
+  const kidCond = (cond) => mode === 'kid'
+    ? String(cond).replace('ガチャ', 'ガチャでゲット')
+    : cond;
+
   const selectBug = (i) => {
     if (i === selectedIdx || i > LOCKED_AFTER) return;
     setFading(true);
@@ -60,7 +64,7 @@ const Dex = () => {
 
             {/*  Left page: selected bug detail  */}
             <div className="dex-page">
-              <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} ｜ 図鑑ページ</div>
+              <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} ｜ {mode==='kid' ? 'ずかんページ' : '図鑑ページ'}</div>
               <div className="dex-featured" style={{opacity:fading?0:1,transition:'opacity 0.22s'}}>
                 <div className="dex-featured-img" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
                 <h4>{meta.jp}</h4>
@@ -70,18 +74,18 @@ const Dex = () => {
                 </div>
                 <div className="dex-fields">
                   <div className="dex-field"><span className="dex-field-k">すみか</span><span className="dex-field-v">{meta.habitat}</span></div>
-                  <div className="dex-field"><span className="dex-field-k">大きさ</span><span className="dex-field-v">{meta.size}</span></div>
-                  <div className="dex-field"><span className="dex-field-k">入手条件</span><span className="dex-field-v">{meta.cond}</span></div>
+                  <div className="dex-field"><span className="dex-field-k">{mode==='kid' ? 'おおきさ' : '大きさ'}</span><span className="dex-field-v">{meta.size}</span></div>
+                  <div className="dex-field"><span className="dex-field-k">{mode==='kid' ? 'あつめかた' : '入手条件'}</span><span className="dex-field-v">{kidCond(meta.cond)}</span></div>
                 </div>
               </div>
               <div style={{marginTop:12,fontSize:11,color:'var(--text-3)',textAlign:'center'}}>
-                {mode==='kid' ? 'みぎのむしをえらんでね' : '右の虫をクリックで切り替え'}
+                {mode==='kid' ? 'むしをえらぶと、ページがかわるよ' : '虫をクリックで切り替え'}
               </div>
             </div>
 
             {/*  Right page: collection grid  */}
             <div className="dex-page">
-              <div className="dex-page-title">コレクション ｜ {LOCKED_AFTER+1} / 100しゅ</div>
+              <div className="dex-page-title">{mode==='kid' ? 'あつめたむし' : 'コレクション'} ｜ {LOCKED_AFTER+1} / 100しゅ</div>
               <div className="dex-mini-grid" style={{gridTemplateColumns:'repeat(5,1fr)'}}>
                 {showcase.map((k, i) => {
                   const locked = i > LOCKED_AFTER;
@@ -89,11 +93,15 @@ const Dex = () => {
                   const isHov = hoveredIdx === i;
                   const rCol = rarColor[(allMeta[k]?.rar)||'N'];
                   return (
-                    <div key={k}
-                      className={"dex-mini" + (locked?' locked':'')}
+                    <button key={k}
+                      type="button"
+                      className={"dex-mini" + (locked?' locked':'') + (isSelected ? ' selected' : '')}
                       onMouseEnter={() => !locked && setHoveredIdx(i)}
                       onMouseLeave={() => setHoveredIdx(null)}
                       onClick={() => selectBug(i)}
+                      disabled={locked}
+                      aria-label={locked ? 'まだあつめていないむし' : (allMeta[k]?.jp || k) + 'をみる'}
+                      aria-pressed={!locked && isSelected}
                       style={{
                         position:'relative',
                         transform: isHov ? 'scale(1.14)' : 'scale(1)',
@@ -111,6 +119,9 @@ const Dex = () => {
                         ? <span style={{color:'var(--text-3)',fontWeight:900,fontSize:16}}>?</span>
                         : <div style={{width:'88%'}} dangerouslySetInnerHTML={{__html: window.INSECT_SVG[k]}}/>
                       }
+                      {isSelected && !locked && (
+                        <span className="dex-mini-selected-label">{mode==='kid' ? 'みてる' : '選択中'}</span>
+                      )}
                       {isHov && !locked && (
                         <div style={{
                           position:'absolute',bottom:'108%',left:'50%',transform:'translateX(-50%)',
@@ -123,14 +134,21 @@ const Dex = () => {
                           {allMeta[k]?.jp || k}
                         </div>
                       )}
-                    </div>
+                    </button>
                   );
                 })}
+              </div>
+              <div key={selKey} className={"dex-mobile-result" + (fading ? ' is-changing' : '')} aria-live="polite">
+                <div className="dex-mobile-result-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
+                <div>
+                  <strong>{mode==='kid' ? 'いまのページ' : '現在のページ'}</strong>
+                  <span>{meta.jp}</span>
+                </div>
               </div>
               <div style={{marginTop:14,background:'var(--bg-4)',padding:'10px 14px',borderRadius:'var(--radius-sm)',fontSize:12,color:'var(--text-2)',lineHeight:1.6}}>
                 <strong style={{color:'var(--gold-6)'}}>★ ふしぎなひみつ</strong><br/>
                 {mode==='kid'
-                  ? 'せいちゅうになった虫は図鑑にのって、その虫だけのひみつのメモがよめるよ！'
+                  ? 'おとなになったむしはずかんにのって、そのむしだけのひみつメモがよめるよ！'
                   : 'せいちゅうになった虫は図鑑に登録され、その虫だけのひみつのメモが読めるようになるよ！'}
               </div>
             </div>

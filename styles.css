@@ -1133,3 +1133,125 @@ footer small { color: var(--text-3); font-size: 12px; }
   .collection-cell { border-radius: 10px; padding: 5px; }
   .collection-locked { border-radius: 10px; }
 }
+
+/* ===== UX refinements: kid copy, mobile dex feedback, CTA preview role ===== */
+.dex-mini {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.dex-mini:disabled {
+  cursor: default;
+}
+.dex-mini.selected {
+  transform: scale(1.04);
+}
+.dex-mini-selected-label {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(8, 24, 10, 0.86);
+  border: 1px solid rgba(168, 216, 88, 0.45);
+  color: var(--gold-6);
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 900;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.dex-mobile-result {
+  display: none;
+}
+.collection-preview {
+  pointer-events: none;
+}
+.collection-caption {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin: 0 auto 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 216, 88, 0.28);
+  background: rgba(8, 24, 10, 0.58);
+  color: var(--leaf-6);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+@keyframes dexResultPop {
+  0% { transform: translateY(4px) scale(0.98); opacity: 0.45; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .dex-page-title {
+    letter-spacing: 0.1em;
+  }
+  .dex-mini-grid {
+    gap: 8px;
+  }
+  .dex-mini {
+    min-height: 58px;
+    border-radius: 12px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dex-mini.selected {
+    box-shadow: 0 0 0 3px rgba(255, 218, 96, 0.18), 0 0 18px rgba(255, 218, 96, 0.28) !important;
+  }
+  .dex-mini-selected-label {
+    display: block;
+  }
+  .dex-mobile-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(168, 216, 88, 0.3);
+    background: linear-gradient(135deg, rgba(22, 46, 24, 0.95), rgba(8, 24, 10, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 10px 24px rgba(0,0,0,0.22);
+    animation: dexResultPop 0.2s ease-out;
+  }
+  .dex-mobile-result-bug {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--bg-4);
+    border: 1px solid var(--bg-6);
+    padding: 4px;
+  }
+  .dex-mobile-result-bug svg {
+    width: 100%;
+    height: 100%;
+  }
+  .dex-mobile-result strong,
+  .dex-mobile-result span {
+    display: block;
+  }
+  .dex-mobile-result strong {
+    color: var(--leaf-6);
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  .dex-mobile-result span {
+    color: var(--text-0);
+    font-size: 15px;
+    font-weight: 900;
+  }
+  .collection-caption {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+}
