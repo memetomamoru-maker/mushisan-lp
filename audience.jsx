@@ -1,11 +1,18 @@
-// Rarity system + Level system (replaces audience tabs)
+// Rarity system + Level system — mode-aware
 const Rarity = () => {
-  const items = [
-    { cls:'n',  badge:'N　ノーマル', count:58, label:'しゅるい', rate:'—',   examples:'アリ・バッタ・クモ・ダンゴムシなど、身近な虫。' },
-    { cls:'r',  badge:'R　レア',     count:30, label:'しゅるい', rate:'—',   examples:'アゲハチョウ・ホタル・タマムシなど、なかなか出会えない虫。' },
-    { cls:'sr', badge:'SR スーパーレア', count:8, label:'しゅるい', rate:'7%', examples:'カブトムシ・ヘラクレスなど、大人気の大型甲虫。' },
-    { cls:'ssr',badge:'SSR でんせつ', count:4, label:'しゅるい', rate:'3%', examples:'ヘラクレス・アトラス・アレキサンドラなど。きわめてレア！' },
+  const { mode } = React.useContext(window.ModeContext);
+  const items = mode === 'kid' ? [
+    { cls:'n',  badge:'N　ノーマル',      count:58, examples:'アリ・バッタ・クモ・ダンゴムシなど、みぢかなむし。' },
+    { cls:'r',  badge:'R　レア',          count:30, examples:'アゲハチョウ・ホタル・タマムシなど、なかなかであえないむし。' },
+    { cls:'sr', badge:'SR　スーパーレア', count:8,  examples:'カブトムシ・ヘラクレスなど、だいにんきのおおきなむし。' },
+    { cls:'ssr',badge:'SSR　でんせつ',    count:4,  examples:'ヘラクレス・アトラスなど。すごくめずらしい！' },
+  ] : [
+    { cls:'n',  badge:'N　ノーマル',         count:58, examples:'アリ・バッタ・クモ・ダンゴムシなど、身近な虫。' },
+    { cls:'r',  badge:'R　レア',             count:30, examples:'アゲハチョウ・ホタル・タマムシなど、なかなか出会えない虫。' },
+    { cls:'sr', badge:'SR　スーパーレア',    count:8,  examples:'カブトムシ・ヘラクレスなど、大人気の大型甲虫。' },
+    { cls:'ssr',badge:'SSR　でんせつ',       count:4,  examples:'ヘラクレス・アトラス・アレキサンドラなど。きわめてレア！' },
   ];
+
   return (
     <section className="rarity" id="rarity" style={{paddingTop:0}}>
       <div className="wave-divider">
@@ -15,16 +22,15 @@ const Rarity = () => {
       </div>
       <div className="container">
         <div className="sec-head center">
-          <span className="sec-label">Rarity System</span>
-          <h2 className="sec-title">全100種、4つのレアリティ。</h2>
-          <p className="sec-lead">30ポイントためるとガチャが1回。どの虫が出るかはお楽しみ。</p>
+          <h2 className="sec-title">{mode==='kid' ? '4つのレアリティ、ぜんぶで100しゅるい。' : '全100種、4つのレアリティ。'}</h2>
+          <p className="sec-lead">{mode==='kid' ? '30ポイントためるとガチャが1かい。どのむしがでるかはおたのしみ！' : '30ポイントためるとガチャが1回。どの虫が出るかはお楽しみ。'}</p>
         </div>
         <div className="rarity-grid">
           {items.map(it => (
             <div key={it.cls} className={"rarity-card " + it.cls}>
               <div className="rarity-badge">{it.badge}</div>
               <div className="rarity-count">{it.count}</div>
-              <div className="rarity-label">{it.label}</div>
+              <div className="rarity-label">しゅるい</div>
               <div style={{display:'flex',justifyContent:'center',gap:4,marginBottom:12}}>
                 {Array.from({length:Math.min(3,Math.floor(it.count/10)+1)}).map((_,i)=>(
                   <div key={i} style={{width:36,height:36,padding:3,background:'var(--bg-4)',borderRadius:8}}
@@ -44,18 +50,39 @@ const Rarity = () => {
 };
 
 const LevelSystem = () => {
-  const grades = [
+  const { mode } = React.useContext(window.ModeContext);
+  const grades = mode === 'kid' ? [
+    { icon:'plant1', grade:'1ねんせいレベル（やさしい）', topics:'1けたのたしざん・ひきざん', pts:'+5pt / もん' },
+    { icon:'plant1', grade:'2〜3ねんせいレベル',          topics:'かけざん・わりざん・2けたのけいさん', pts:'+7〜9pt / もん' },
+    { icon:'plant1', grade:'4〜6ねんせいレベル（むずかしい）', topics:'しょうすう・ぶんすう・はやさのもんだい', pts:'+11〜15pt / もん' },
+  ] : [
     { icon:'plant1', grade:'1年生レベル（やさしい）',  topics:'1けたのたしざん・ひきざん',          pts:'+5pt / もん' },
     { icon:'plant1', grade:'2〜3年生レベル',           topics:'かけざん・わりざん・2けたの計算',    pts:'+7〜9pt / もん' },
     { icon:'plant1', grade:'4〜6年生レベル（むずかしい）', topics:'しょうすう・ぶんすう・速さの文章題', pts:'+11〜15pt / もん' },
   ];
+
+  const rules = mode === 'kid' ? [
+    { icon:'chart', cls:'rule-up',   text:<><strong style={{color:'var(--leaf-6)'}}>5もんれんぞくせいかい</strong>でレベルアップ</> },
+    { icon:'chart', cls:'rule-down', text:<><strong style={{color:'var(--red-6)'}}>3もんれんぞくふせいかい</strong>でレベルダウン</> },
+    { icon:'point', cls:'',          text:<>むずかしいもんだいほど<strong style={{color:'var(--gold-6)'}}>ポイントがおおく</strong>もらえるよ</> },
+    { icon:'bug',   cls:'',          text:<>「じどう」「じゆう」「おおきいかずチャレンジ」の3つのモードがあるよ</> },
+  ] : [
+    { icon:'chart', cls:'rule-up',   text:<><strong style={{color:'var(--leaf-6)'}}>5問連続正解</strong>でレベルアップ</> },
+    { icon:'chart', cls:'rule-down', text:<><strong style={{color:'var(--red-6)'}}>3問連続不正解</strong>でレベルダウン</> },
+    { icon:'point', cls:'',          text:<>難しい問題ほど<strong style={{color:'var(--gold-6)'}}>ポイントが多く</strong>もらえる</> },
+    { icon:'bug',   cls:'',          text:<>モードは「自動」「自由選択」「大きい数チャレンジ」の3種</> },
+  ];
+
   return (
     <section className="levels" id="levels">
       <div className="container">
         <div className="sec-head">
-          <span className="sec-label">Level System</span>
-          <h2 className="sec-title">ちょうどいい難しさに、<br/>自動で調整される。</h2>
-          <p className="sec-lead">小1〜小6、全学年対応。学年をまたいだ問題も練習できる。</p>
+          <h2 className="sec-title">{mode==='kid'
+            ? 'ちょうどいいむずかしさに、じどうでかわるよ。'
+            : 'ちょうどいい難しさに、自動で調整される。'}</h2>
+          <p className="sec-lead">{mode==='kid'
+            ? 'しょうがっこうぜんがくねん（6〜12さい）たいおう。じぶんでがくねんをえらべるよ。'
+            : '小1〜小6、全学年対応。学年をまたいだ問題も練習できる。'}</p>
         </div>
         <div className="level-grid">
           <div className="level-cards">
@@ -73,23 +100,15 @@ const LevelSystem = () => {
             ))}
           </div>
           <div className="level-chart">
-            <h4>レベルアップのしくみ</h4>
-            <div className="level-rule">
-              <div className="level-rule-icon rule-up"><div style={{width:16,height:16}} dangerouslySetInnerHTML={{__html: window.ICONS.chart}}/></div>
-              <div><strong style={{color:'var(--leaf-6)'}}>5問連続正解</strong>でレベルアップ</div>
-            </div>
-            <div className="level-rule">
-              <div className="level-rule-icon rule-down"><div style={{width:16,height:16}} dangerouslySetInnerHTML={{__html: window.ICONS.chart}}/></div>
-              <div><strong style={{color:'var(--red-6)'}}>3問連続不正解</strong>でレベルダウン</div>
-            </div>
-            <div className="level-rule">
-              <div className="level-rule-icon"><div style={{width:16,height:16}} dangerouslySetInnerHTML={{__html: window.ICONS.point}}/></div>
-              <div>難しい問題ほど<strong style={{color:'var(--gold-6)'}}>ポイントが多く</strong>もらえる</div>
-            </div>
-            <div className="level-rule">
-              <div className="level-rule-icon"><div style={{width:16,height:16}} dangerouslySetInnerHTML={{__html: window.ICONS.bug}}/></div>
-              <div>モードは「自動」「自由選択」「大きい数チャレンジ」の3種</div>
-            </div>
+            <h4>{mode==='kid' ? 'レベルアップのしくみ' : 'レベルアップのしくみ'}</h4>
+            {rules.map((r,i) => (
+              <div key={i} className="level-rule">
+                <div className={"level-rule-icon " + r.cls}>
+                  <div style={{width:16,height:16}} dangerouslySetInnerHTML={{__html: window.ICONS[r.icon]}}/>
+                </div>
+                <div>{r.text}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
