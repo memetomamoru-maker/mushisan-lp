@@ -230,7 +230,7 @@ const ParentSection = () => {
             <div className="parent-card-icon"><div dangerouslySetInnerHTML={{__html: window.ICONS.shield}}/></div>
             <h4>安心・安全について</h4>
             <ul className="parent-list">
-              {['利用料金・課金・購入要素はありません','広告は一切表示されません','外部通信は行いません（Wikipedia除く）','個人情報の収集はありません','ニックネームはお使いの端末にのみ保存されます','暴力・暗い表現は含みません'].map(t=>(
+              {['利用料金・課金・購入要素はありません','広告は一切表示されません','広告・解析目的の外部送信はありません','個人情報の収集はありません','ニックネームはお使いの端末にのみ保存されます','暴力・暗い表現は含みません'].map(t=>(
                 <li key={t}><span className="ck" dangerouslySetInnerHTML={{__html: window.ICONS.check}}/>{t}</li>
               ))}
             </ul>
