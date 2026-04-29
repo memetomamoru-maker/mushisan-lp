@@ -41,10 +41,14 @@ const FAQ = () => {
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
-                  <span><span className="faq-q-label">Q.</span>{it.q}</span>
-                  <span className="faq-toggle" dangerouslySetInnerHTML={{__html: window.ICONS.arrow}}/>
+                  <span className="faq-q-text"><span className="faq-q-label">Q.</span>{it.q}</span>
+                  <span className="faq-toggle" aria-hidden="true"></span>
                 </button>
-                <div className="faq-a">{it.a}</div>
+                <div className="faq-a" role="region" aria-hidden={!isOpen}>
+                  <div className="faq-a-inner">
+                    <div className="faq-a-content">{it.a}</div>
+                  </div>
+                </div>
               </div>
             );
           })}
