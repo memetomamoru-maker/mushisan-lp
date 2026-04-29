@@ -1,4 +1,4 @@
-// SVG icon library — replaces all emoji usage
+// SVG icon library ｜ replaces all emoji usage
 window.ICONS = {
   math: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h8M4 17h16M16 12l2 2 4-4"/></svg>`,
   egg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 4 7 4 13a8 8 0 0016 0c0-6-4-11-8-11z"/></svg>`,

@@ -12,7 +12,7 @@ const TweaksPanel = ({ visible, tweaks, setTweak }) => {
         <label>アクセントカラー</label>
         <div className="opts">
           {[['green','深緑（標準）'],['gold','ゴールド'],['teal','ティール']].map(([v,l])=>(
-            <button key={v} className={tweaks.accent===v?'active':''} onClick={()=>setTweak('accent',v)}>{l}</button>
+            <button type="button" key={v} className={tweaks.accent===v?'active':''} onClick={()=>setTweak('accent',v)}>{l}</button>
           ))}
         </div>
       </div>

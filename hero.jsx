@@ -10,8 +10,8 @@ const Nav = () => {
           <span>ムシ算<span className="logo-sub">MUSHISAN</span></span>
         </a>
         <div className="audience-toggle">
-          <button className={"aud-btn" + (mode==='kid'?' active':'')} onClick={()=>setMode('kid')}>こどもへ</button>
-          <button className={"aud-btn" + (mode==='parent'?' active':'')} onClick={()=>setMode('parent')}>親御さんへ</button>
+          <button type="button" className={"aud-btn" + (mode==='kid'?' active':'')} onClick={()=>setMode('kid')}>こどもへ</button>
+          <button type="button" className={"aud-btn" + (mode==='parent'?' active':'')} onClick={()=>setMode('parent')}>親御さんへ</button>
         </div>
         <div className="nav-links">
           <a href="#flow">あそびかた</a>
@@ -131,7 +131,7 @@ const Hero = () => {
           <p className="hero-lead">
             {mode === 'kid'
               ? 'さんすうのもんだいにこたえるとポイントがもらえて、ガチャでたまごをゲット。たまごをそだてて、ずかんをうめよう！'
-              : '算数の問題を解くたびにポイントが貯まり、虫のたまごをゲット。ゲームへの自然な動機が、毎日の計算練習につながります。小学全学年対応・完全無料。'}
+              : '算数の問題を解くたびにポイントが貯まり、虫のたまごをゲット。ゲームへの自然な動機が、毎日の計算練習につながります。小学生向けの幅広い難易度・完全無料。'}
           </p>
           <div className="hero-ctas">
             <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="btn-primary">

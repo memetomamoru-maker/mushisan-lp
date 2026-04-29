@@ -1,4 +1,4 @@
-// Japanese insect names and meta — maps to keys in INSECT_SVG
+// Japanese insect names and meta ｜ maps to keys in INSECT_SVG
 window.BUG_META = {
   kabuto:   { jp: 'カブトムシ', en: 'Beetle', rarity: 5, habitat: 'クヌギ林' },
   miyama:   { jp: 'ミヤマクワガタ', en: 'Stag Beetle', rarity: 5, habitat: '山の雑木林' },

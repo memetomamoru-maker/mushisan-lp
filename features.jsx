@@ -1,4 +1,4 @@
-// Game flow + Features — mode-aware (kid = hiragana-heavy)
+// Game flow + Features ｜ mode-aware (kid = hiragana-heavy)
 const GameFlow = () => {
   const { mode } = React.useContext(window.ModeContext);
   const steps = mode === 'kid' ? [
@@ -7,7 +7,7 @@ const GameFlow = () => {
     { icon: 'gacha', title: 'ガチャをまわす',  desc: '30ポイントでたまごを1かいガチャ。なにがでるかな？' },
     { icon: 'egg',   title: 'たまごをそだてる', desc: 'たまご→ようちゅう→さなぎ→せいちゅうの4だんかいでそだつよ。' },
   ] : [
-    { icon: 'math',  title: '算数に答える',    desc: '全学年対応の問題を解くと、正解ごとにポイントをゲット。' },
+    { icon: 'math',  title: '算数に答える',    desc: '幅広い難易度の問題を解くと、正解ごとにポイントをゲット。' },
     { icon: 'point', title: 'ポイントをためる', desc: '5問連続正解でレベルアップ。難易度が自動調整される。' },
     { icon: 'gacha', title: 'ガチャを回す',    desc: '30ポイントで虫のたまごを1回ガチャ。N〜SSRのレアリティ。' },
     { icon: 'egg',   title: 'たまごを育てる',  desc: 'たまご→ようちゅう→さなぎ→せいちゅうの4段階で成長。' },
@@ -120,7 +120,7 @@ const Features = () => {
         </div>
         <div className="feat-tabs">
           {items.map((it,i) => (
-            <button key={i} className={"feat-tab" + (active===i?' active':'')} onClick={()=>setActive(i)}>
+            <button type="button" key={i} className={"feat-tab" + (active===i?' active':'')} onClick={()=>setActive(i)}>
               <span className="feat-tab-num">{it.num}</span>
               {it.title}
             </button>

@@ -1,4 +1,4 @@
-// Dex — redesigned: every unlocked bug is clickable
+// Dex ｜ redesigned: every unlocked bug is clickable
 const Dex = () => {
   const { mode } = React.useContext(window.ModeContext);
   const showcase = window.BUG_SHOWCASE.slice(0, 20);
@@ -41,7 +41,7 @@ const Dex = () => {
   };
 
   const selKey = showcase[selectedIdx];
-  const meta = allMeta[selKey] || { jp: selKey, en: selKey, rar:'N', habitat:'—', size:'—', cond:'ガチャ（N）' };
+  const meta = allMeta[selKey] || { jp: selKey, en: selKey, rar:'N', habitat:'｜', size:'｜', cond:'ガチャ（N）' };
 
   return (
     <section className="dex" id="dex">
@@ -58,9 +58,9 @@ const Dex = () => {
           <div className="dex-divider"/>
           <div className="dex-pages">
 
-            {/* ── Left page: selected bug detail ── */}
+            {/*  Left page: selected bug detail  */}
             <div className="dex-page">
-              <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} — 図鑑ページ</div>
+              <div className="dex-page-title">No.{String(selectedIdx+1).padStart(3,'0')} ｜ 図鑑ページ</div>
               <div className="dex-featured" style={{opacity:fading?0:1,transition:'opacity 0.22s'}}>
                 <div className="dex-featured-img" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[selKey]}}/>
                 <h4>{meta.jp}</h4>
@@ -79,9 +79,9 @@ const Dex = () => {
               </div>
             </div>
 
-            {/* ── Right page: collection grid ── */}
+            {/*  Right page: collection grid  */}
             <div className="dex-page">
-              <div className="dex-page-title">コレクション — {LOCKED_AFTER+1} / 100しゅ</div>
+              <div className="dex-page-title">コレクション ｜ {LOCKED_AFTER+1} / 100しゅ</div>
               <div className="dex-mini-grid" style={{gridTemplateColumns:'repeat(5,1fr)'}}>
                 {showcase.map((k, i) => {
                   const locked = i > LOCKED_AFTER;

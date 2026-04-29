@@ -10,6 +10,7 @@ const FAQ = () => {
     { q:'兄弟姉妹で1台を共有できますか？', a:'現在は1端末につき1プレイヤーのデータが保存されます。兄弟姉妹で使いたい場合は、それぞれ別の端末でお楽しみください。' },
   ];
   const [open, setOpen] = React.useState(null);
+
   return (
     <section className="faq-sec" id="faq" style={{paddingTop:0}}>
       <div className="wave-divider">
@@ -23,15 +24,23 @@ const FAQ = () => {
           <h2 className="sec-title">よくある質問</h2>
         </div>
         <div className="faq-list">
-          {items.map((it, i) => (
-            <div key={i} className={"faq-item " + (open === i ? 'open' : '')}>
-              <button className="faq-q" onClick={() => setOpen(open === i ? null : i)}>
-                <span><span className="faq-q-label">Q.</span>{it.q}</span>
-                <span className="faq-toggle" dangerouslySetInnerHTML={{__html: window.ICONS.arrow}}/>
-              </button>
-              <div className="faq-a">{it.a}</div>
-            </div>
-          ))}
+          {items.map((it, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} className={"faq-item " + (isOpen ? 'open' : '')}>
+                <button
+                  type="button"
+                  className="faq-q"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                >
+                  <span><span className="faq-q-label">Q.</span>{it.q}</span>
+                  <span className="faq-toggle" dangerouslySetInnerHTML={{__html: window.ICONS.arrow}}/>
+                </button>
+                <div className="faq-a">{it.a}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -47,7 +56,11 @@ const FinalCTA = () => {
     ['ageha','morpho','jewelbug','firefly'],
     ['mantis','dragonfly','lady','actaeon'],
   ];
-  const rarColor = {'kabuto':'#4aaa4a','miyama':'#4a8cc8','herc':'#e8a030','atlas':'#a060d0','ageha':'#4a8cc8','morpho':'#a060d0','jewelbug':'#a060d0','firefly':'#4a8cc8','mantis':'#4aaa4a','dragonfly':'#4a8cc8','lady':'#4aaa4a','actaeon':'#e8a030'};
+  const rarColor = {
+    kabuto:'#4aaa4a', miyama:'#4a8cc8', herc:'#e8a030', atlas:'#a060d0',
+    ageha:'#4a8cc8', morpho:'#a060d0', jewelbug:'#a060d0', firefly:'#4a8cc8',
+    mantis:'#4aaa4a', dragonfly:'#4a8cc8', lady:'#4aaa4a', actaeon:'#e8a030',
+  };
 
   return (
     <section className="final-cta" id="cta">
@@ -69,16 +82,17 @@ const FinalCTA = () => {
                 いますぐ無料で遊ぶ
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="cta-url">
-                mushisan.vercel.app
-              </a>
+              <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer" className="cta-url">mushisan.vercel.app</a>
             </div>
           </div>
 
           <div className="collection-preview" aria-hidden="true">
             <div className="collection-card">
               <div className="collection-head">
-                <span>📖 むしずかん</span>
+                <span className="collection-title">
+                  <span className="collection-title-icon" dangerouslySetInnerHTML={{__html: window.ICONS.book}}/>
+                  むしずかん
+                </span>
                 <span>12 / 100 しゅ</span>
               </div>
               <div className="collection-body">
@@ -87,17 +101,13 @@ const FinalCTA = () => {
                     {row.map((k, ci) => {
                       const idx = ri * 4 + ci;
                       const isH = hovered === idx;
-                      const rCol = rarColor[k] || '#4aaa4a';
                       return (
-                        <div key={k}
-                          className="collection-cell"
+                        <div
+                          key={k}
+                          className={"collection-cell" + (isH ? ' is-hovered' : '')}
+                          style={{'--cell-accent': rarColor[k] || '#4aaa4a', '--cell-glow': (rarColor[k] || '#4aaa4a') + '33'}}
                           onMouseEnter={() => setHovered(idx)}
                           onMouseLeave={() => setHovered(null)}
-                          style={{
-                            borderColor: isH ? rCol : undefined,
-                            transform: isH ? 'scale(1.06)' : 'scale(1)',
-                            boxShadow: isH ? '0 8px 24px ' + rCol + '33' : undefined,
-                          }}
                         >
                           <div className="collection-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG[k]}} />
                         </div>
@@ -122,8 +132,7 @@ const Footer = () => (
   <footer>
     <div className="container footer-inner">
       <div className="footer-logo">
-        <div style={{width:30,height:30,background:'var(--bg-4)',borderRadius:8,padding:3,border:'1px solid var(--bg-6)'}}
-             dangerouslySetInnerHTML={{__html: window.INSECT_SVG.kabuto}}/>
+        <div className="footer-logo-bug" dangerouslySetInnerHTML={{__html: window.INSECT_SVG.kabuto}}/>
         <span>ムシ算</span>
       </div>
       <div className="footer-links">
@@ -132,7 +141,7 @@ const Footer = () => (
         <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer">免責事項</a>
         <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer">運営者note</a>
       </div>
-      <small>© 2026 <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer" style={{color:'var(--leaf-6)',textDecoration:'none'}}>memetomamoru</a> — ムシ算</small>
+      <small>© 2026 <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer" className="footer-note-link">memetomamoru</a> ｜ ムシ算</small>
     </div>
   </footer>
 );
