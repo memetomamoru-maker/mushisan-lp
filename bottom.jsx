@@ -55,7 +55,7 @@ const FinalCTA = () => {
       {/* subtle green glow */}
       <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 600px 400px at 50% 50%, rgba(45,122,45,0.08), transparent)',pointerEvents:'none'}}/>
       <div className="container" style={{position:'relative',zIndex:1}}>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:64,alignItems:'center'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr minmax(0,480px)',gap:40,alignItems:'center'}}>
           {/* Left — copy */}
           <div>
             {mode === 'kid' ? <>
@@ -78,7 +78,7 @@ const FinalCTA = () => {
           </div>
 
           {/* Right — game collection UI */}
-          <div style={{overflow:'hidden',minWidth:0}}>
+          <div style={{overflow:'hidden',minWidth:0,width:'100%'}}>
             {/* Header bar */}
             <div style={{
               background:'linear-gradient(180deg, #0f2010, #0a1a0b)',
@@ -99,7 +99,7 @@ const FinalCTA = () => {
               padding:'16px',
             }}>
               {rows.map((row,ri) => (
-                <div key={ri} style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:10,marginBottom: ri < rows.length-1 ? 10 : 0}}>
+                <div key={ri} style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8,marginBottom: ri < rows.length-1 ? 8 : 0}}>
                   {row.map((k,ci) => {
                     const idx = ri*4+ci;
                     const isH = hovered===idx;
@@ -112,8 +112,8 @@ const FinalCTA = () => {
                           aspectRatio:'1',
                           background: isH ? 'rgba(45,122,45,0.2)' : 'rgba(20,40,20,0.6)',
                           border: isH ? `2px solid ${rCol}` : '1px solid rgba(45,122,45,0.25)',
-                          borderRadius:14,
-                          padding:10,
+                          borderRadius:12,
+                          padding:8,
                           cursor:'default',
                           transition:'all 0.15s',
                           transform: isH ? 'scale(1.08)' : 'scale(1)',
