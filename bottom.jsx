@@ -78,7 +78,7 @@ const FinalCTA = () => {
           </div>
 
           {/* Right — game collection UI */}
-          <div>
+          <div style={{overflow:'hidden',minWidth:0}}>
             {/* Header bar */}
             <div style={{
               background:'linear-gradient(180deg, #0f2010, #0a1a0b)',
