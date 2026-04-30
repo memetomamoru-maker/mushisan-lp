@@ -1263,7 +1263,7 @@ footer small { color: var(--text-3); font-size: 12px; }
 
 .legal-modal-body {
   display: grid;
-  gap: 18px;
+  gap: 10px;
 }
 
 .legal-modal-body section {
@@ -1272,14 +1272,14 @@ footer small { color: var(--text-3); font-size: 12px; }
 
 .legal-modal-body h3 {
   color: var(--gold-6);
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 15px;
+  margin-bottom: 4px;
 }
 
 .legal-modal-body p {
   color: var(--text-2);
-  font-size: 14px;
-  line-height: 1.9;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 @media (max-width: 560px) {
