@@ -115,6 +115,81 @@ const ForestBg = () => (
   </div>
 );
 
+
+const HeroWordmark = () => (
+  <div className="hero-wordmark-wrap" aria-label="ムシ算">
+    <svg className="hero-wordmark" viewBox="0 0 560 170" role="img" aria-labelledby="heroWordmarkTitle" xmlns="http://www.w3.org/2000/svg">
+      <title id="heroWordmarkTitle">ムシ算</title>
+      <defs>
+        <linearGradient id="mwGreen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#9CFF5D"/>
+          <stop offset="48%" stopColor="#32D04A"/>
+          <stop offset="100%" stopColor="#087C2E"/>
+        </linearGradient>
+        <linearGradient id="mwGold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FFF082"/>
+          <stop offset="46%" stopColor="#FFC23A"/>
+          <stop offset="100%" stopColor="#FF8D18"/>
+        </linearGradient>
+        <linearGradient id="mwLeaf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#D9FF78"/>
+          <stop offset="100%" stopColor="#30B548"/>
+        </linearGradient>
+        <filter id="mwShadow" x="-18%" y="-28%" width="136%" height="160%">
+          <feDropShadow dx="0" dy="6" stdDeviation="5" floodColor="#000" floodOpacity="0.38"/>
+          <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#A8FF64" floodOpacity="0.22"/>
+        </filter>
+        <filter id="mwSoftGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <path d="M22 122 C92 152 196 145 260 120 C337 90 436 98 526 124" fill="none" stroke="#95E55F" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 12" opacity="0.68"/>
+
+      <g transform="translate(498 17) rotate(15)">
+        <path d="M0 34 C34 8 56 8 80 18 C58 50 30 58 0 34Z" fill="url(#mwLeaf)"/>
+        <path d="M12 33 C36 29 56 22 75 18" fill="none" stroke="#176D2A" strokeWidth="3" strokeLinecap="round" opacity="0.55"/>
+      </g>
+      <g transform="translate(38 21) rotate(-28) scale(.82)">
+        <path d="M0 34 C34 8 56 8 80 18 C58 50 30 58 0 34Z" fill="url(#mwLeaf)"/>
+        <path d="M12 33 C36 29 56 22 75 18" fill="none" stroke="#176D2A" strokeWidth="3" strokeLinecap="round" opacity="0.55"/>
+      </g>
+
+      <g className="hero-wordmark-bug" transform="translate(218 4) rotate(-6)">
+        <path d="M33 40 C28 22 16 15 7 9" fill="none" stroke="#6D3E12" strokeWidth="4" strokeLinecap="round"/>
+        <path d="M63 40 C69 22 81 15 90 9" fill="none" stroke="#6D3E12" strokeWidth="4" strokeLinecap="round"/>
+        <circle cx="5" cy="8" r="5" fill="#FF7C2D" stroke="#512300" strokeWidth="2"/>
+        <circle cx="92" cy="8" r="5" fill="#FF7C2D" stroke="#512300" strokeWidth="2"/>
+        <ellipse cx="31" cy="57" rx="28" ry="31" fill="#C6F07A" stroke="#15370D" strokeWidth="5"/>
+        <ellipse cx="65" cy="57" rx="28" ry="31" fill="#9BE45E" stroke="#15370D" strokeWidth="5"/>
+        <ellipse cx="48" cy="72" rx="26" ry="34" fill="#6FDA33" stroke="#15370D" strokeWidth="5"/>
+        <circle cx="38" cy="48" r="9" fill="#10220B"/>
+        <circle cx="59" cy="48" r="9" fill="#10220B"/>
+        <circle cx="41" cy="45" r="3" fill="#fff"/>
+        <circle cx="62" cy="45" r="3" fill="#fff"/>
+        <path d="M36 79 C44 86 54 86 62 79" fill="none" stroke="#16340E" strokeWidth="4" strokeLinecap="round"/>
+      </g>
+
+      <g filter="url(#mwShadow)">
+        <text x="20" y="118" fontFamily="'M PLUS Rounded 1c','Noto Sans JP',sans-serif" fontSize="94" fontWeight="900" letterSpacing="-8" stroke="#ffffff" strokeWidth="18" strokeLinejoin="round" paintOrder="stroke fill">ムシ</text>
+        <text x="20" y="118" fontFamily="'M PLUS Rounded 1c','Noto Sans JP',sans-serif" fontSize="94" fontWeight="900" letterSpacing="-8" stroke="#092812" strokeWidth="8" strokeLinejoin="round" paintOrder="stroke fill" fill="url(#mwGreen)">ムシ</text>
+        <text x="276" y="121" fontFamily="'M PLUS Rounded 1c','Noto Sans JP',sans-serif" fontSize="104" fontWeight="900" letterSpacing="-5" stroke="#ffffff" strokeWidth="18" strokeLinejoin="round" paintOrder="stroke fill">算</text>
+        <text x="276" y="121" fontFamily="'M PLUS Rounded 1c','Noto Sans JP',sans-serif" fontSize="104" fontWeight="900" letterSpacing="-5" stroke="#4A2700" strokeWidth="8" strokeLinejoin="round" paintOrder="stroke fill" fill="url(#mwGold)">算</text>
+      </g>
+
+      <g filter="url(#mwSoftGlow)" opacity="0.95">
+        <path d="M438 88 l9 19 20 7 -20 7 -9 19 -9 -19 -20 -7 20 -7Z" fill="#FFF35A"/>
+        <path d="M488 112 l6 12 13 5 -13 5 -6 12 -6 -12 -13 -5 13 -5Z" fill="#B6FF6A"/>
+        <circle cx="459" cy="39" r="6" fill="#FFEB55"/>
+      </g>
+    </svg>
+  </div>
+);
+
 const Hero = () => {
   const { mode } = React.useContext(window.ModeContext);
   return (
@@ -123,10 +198,7 @@ const Hero = () => {
       <div className="container hero-grid" style={{position:'relative',zIndex:1}}>
         <div>
           <span className="hero-kicker">{mode==='kid' ? 'しょうがくせいむけ さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
-          <div className="hero-appname">
-            <span dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'hero-icon')}} style={{width:40,height:40,display:'inline-block',verticalAlign:'middle',marginRight:10}} />
-            <span>ムシ算</span>
-          </div>
+          <HeroWordmark />
           <h1>
             {mode === 'kid'
               ? <>
