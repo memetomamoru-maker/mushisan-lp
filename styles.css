@@ -2338,3 +2338,230 @@ html, body, #root, .nav, .hero, section, footer {
   font-size: clamp(36px, 3.7vw, 54px);
   max-width: 680px;
 }
+
+/* ===== Hero fine tune v3 ｜ balance / parent copy / spacing ===== */
+.hero {
+  padding: 78px 0 54px !important;
+  min-height: auto !important;
+}
+
+.wave-divider svg {
+  height: 34px !important;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.02fr) minmax(280px, .72fr) !important;
+  gap: clamp(34px, 4.1vw, 58px) !important;
+  align-items: center !important;
+}
+
+.hero-wordmark-wrap {
+  width: min(342px, 100%) !important;
+  margin: -4px 0 18px !important;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 3.8vw, 56px) !important;
+  line-height: 1.12 !important;
+  margin-bottom: 20px !important;
+  max-width: 660px;
+}
+
+.hero-parent h1 {
+  font-size: clamp(35px, 3.05vw, 46px) !important;
+  max-width: 720px !important;
+  letter-spacing: -.01em;
+}
+
+.hero-parent .hero-title-line {
+  white-space: nowrap !important;
+}
+
+.hero-lead {
+  max-width: 620px;
+  font-size: 15.8px !important;
+  line-height: 1.82 !important;
+  margin-bottom: 28px !important;
+}
+
+.hero-parent .hero-lead {
+  max-width: 650px;
+  font-size: 15.4px !important;
+  line-height: 1.86 !important;
+}
+
+.hero-ctas {
+  margin-top: 0 !important;
+}
+
+.hero-meta {
+  margin-top: 24px !important;
+  gap: 15px 20px !important;
+}
+
+/* background: quieter, less decorative, more readable */
+.forest-bg {
+  opacity: .86 !important;
+}
+.forest-base {
+  background:
+    radial-gradient(ellipse 520px 380px at 68% 39%, rgba(112, 218, 88, 0.14), transparent 72%),
+    radial-gradient(ellipse 440px 300px at 24% 47%, rgba(78, 162, 86, 0.09), transparent 74%),
+    radial-gradient(ellipse 740px 420px at 50% 95%, rgba(38, 72, 34, 0.36), transparent 72%),
+    linear-gradient(180deg, #050a08 0%, #07130b 36%, #09200f 62%, #050b06 100%) !important;
+}
+.forest-depth { opacity: .46 !important; }
+.forest-depth-b { opacity: .70 !important; }
+.forest-depth-c { opacity: .28 !important; }
+.forest-canopy-back { opacity: .42 !important; }
+.forest-leaf-masses ellipse { fill: rgba(7, 24, 13, .70) !important; }
+.forest-leaf-dots circle { fill: rgba(29, 67, 31, .22) !important; }
+.forest-canopy-mid { opacity: .25 !important; }
+.forest-trail { opacity: .58 !important; }
+.trail-glow { stroke: rgba(164, 235, 91, .13) !important; stroke-width: 10 !important; }
+.trail-line { stroke: rgba(156, 226, 87, .56) !important; stroke-width: 2.2 !important; }
+.trail-leaf { opacity: .58 !important; }
+.forest-frame { opacity: .20 !important; }
+.forest-fireflies i {
+  opacity: .72 !important;
+  box-shadow: 0 0 8px 3px rgba(198, 255, 84, .18), 0 0 18px 7px rgba(107, 220, 72, .09) !important;
+}
+.forest-vignette {
+  background:
+    radial-gradient(ellipse 78% 68% at 50% 42%, transparent 0%, rgba(0,0,0,.16) 58%, rgba(0,0,0,.64) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.30) 0%, transparent 22%, transparent 72%, rgba(0,0,0,.54) 100%) !important;
+}
+
+/* phone: smaller and less dominant */
+.phone-wrap {
+  transform: translateX(-2px) !important;
+}
+.phone-wrap::before {
+  inset: 6% -2% 13% -2% !important;
+  opacity: .62 !important;
+  filter: blur(14px) !important;
+}
+.phone-wrap::after {
+  left: 14% !important;
+  right: 10% !important;
+  bottom: 0 !important;
+  height: 72px !important;
+  opacity: .72 !important;
+}
+.phone {
+  width: min(304px, 25vw) !important;
+  border-radius: 46px !important;
+  padding: 9px !important;
+  transform: rotate(3.2deg) translateY(2px) !important;
+  box-shadow: 0 34px 64px rgba(0,0,0,.60), 0 0 0 1px rgba(221,255,146,.14), 0 0 36px rgba(151,235,79,.09) !important;
+}
+.phone-screen {
+  min-height: 528px !important;
+  border-radius: 38px !important;
+}
+.phone-notch {
+  height: 9px !important;
+  margin-top: 9px !important;
+}
+
+/* parent mode: more adult, cleaner hierarchy */
+.hero-parent .hero-kicker {
+  background: rgba(28, 54, 31, .72) !important;
+}
+.hero-parent .hero-wordmark-wrap {
+  margin-bottom: 14px !important;
+}
+.hero-parent .hero-meta {
+  max-width: 560px;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, .62fr) !important;
+    gap: 34px !important;
+  }
+  .phone {
+    width: min(282px, 25vw) !important;
+  }
+  .phone-screen {
+    min-height: 500px !important;
+  }
+  .hero-parent h1 {
+    font-size: clamp(33px, 3.2vw, 42px) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 54px 0 42px !important;
+  }
+  .hero-grid {
+    gap: 28px !important;
+  }
+  .phone {
+    width: min(286px, 70vw) !important;
+  }
+  .phone-screen {
+    min-height: 520px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 34px 0 38px !important;
+  }
+  .hero-wordmark-wrap {
+    width: min(292px, 92vw) !important;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 8.7vw, 40px) !important;
+    max-width: 100% !important;
+  }
+  .hero-parent h1 {
+    font-size: clamp(30px, 8.0vw, 37px) !important;
+  }
+  .hero-parent .hero-title-line {
+    white-space: normal !important;
+  }
+  .hero-lead,
+  .hero-parent .hero-lead {
+    font-size: 13.8px !important;
+    line-height: 1.76 !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-meta {
+    margin-top: 16px !important;
+  }
+  .forest-trail {
+    opacity: .30 !important;
+  }
+  .forest-canopy-back,
+  .forest-frame {
+    opacity: .18 !important;
+  }
+  .phone {
+    width: min(236px, 68vw) !important;
+    transform: rotate(1deg) !important;
+  }
+  .phone-screen {
+    min-height: 456px !important;
+  }
+  .phone-wrap::before {
+    opacity: .42 !important;
+  }
+  .phone-wrap::after {
+    height: 48px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-wordmark-wrap {
+    width: min(276px, 92vw) !important;
+  }
+  .phone {
+    width: min(220px, 70vw) !important;
+  }
+  .phone-screen {
+    min-height: 434px !important;
+  }
+}

@@ -219,7 +219,7 @@ const Hero = () => {
                 </>
               : <>
                   <span className="hero-title-line">ゲーム感覚で、</span>
-                  <span className="hero-title-line hl">計算練習を続けやすく。</span>
+                  <span className="hero-title-line hl">計算練習を習慣に。</span>
                 </>}
           </h1>
           <p className="hero-lead">
