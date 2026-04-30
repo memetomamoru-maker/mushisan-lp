@@ -1131,9 +1131,109 @@ footer {
 }
 .footer-logo span { font-weight: 900; font-size: 16px; letter-spacing: 0.06em; }
 .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { color: var(--text-3); text-decoration: none; font-size: 13px; transition: color 0.15s; }
-.footer-links a:hover { color: var(--leaf-6); }
+.footer-links a,
+.footer-links button {
+  color: var(--text-3);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+.footer-links a:hover,
+.footer-links button:hover { color: var(--leaf-6); }
 footer small { color: var(--text-3); font-size: 12px; }
+
+.legal-modal-ov {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.legal-modal {
+  width: min(680px, 100%);
+  max-height: min(78vh, 720px);
+  overflow-y: auto;
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(168, 216, 168, 0.22);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(93, 200, 93, 0.14), transparent 35%),
+    linear-gradient(145deg, rgba(17, 35, 18, 0.98), rgba(6, 14, 7, 0.98));
+  box-shadow: 0 24px 80px rgba(0,0,0,0.62);
+  padding: 30px;
+}
+
+.legal-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 216, 168, 0.2);
+  background: rgba(255,255,255,0.06);
+  color: var(--text-0);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.legal-modal-kicker {
+  color: var(--leaf-6);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  margin-bottom: 8px;
+}
+
+.legal-modal h2 {
+  font-size: clamp(24px, 4vw, 34px);
+  margin-bottom: 20px;
+}
+
+.legal-modal-body {
+  display: grid;
+  gap: 18px;
+}
+
+.legal-modal-body section {
+  padding-top: 2px;
+}
+
+.legal-modal-body h3 {
+  color: var(--gold-6);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.legal-modal-body p {
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+@media (max-width: 560px) {
+  .legal-modal-ov {
+    align-items: flex-end;
+    padding: 12px;
+  }
+  .legal-modal {
+    max-height: 82vh;
+    padding: 24px 20px 28px;
+    border-radius: 24px;
+  }
+}
 .footer-note-link { color: var(--leaf-6); text-decoration: none; }
 .footer-note-link:hover { color: var(--leaf-7); }
 

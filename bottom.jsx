@@ -135,22 +135,91 @@ const FinalCTA = () => {
   );
 };
 
-const Footer = () => (
-  <footer>
-    <div className="container footer-inner">
-      <div className="footer-logo">
-        <div className="footer-logo-bug" dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'footer')}}/>
-        <span>ムシ算</span>
+const LEGAL_COPY = {
+  pp: {
+    title: 'プライバシーポリシー',
+    sections: [
+      ['収集する情報', '本サービスは、お客様の個人情報を収集しません。ゲームのセーブデータ（お名前・スコア・図鑑の進捗）は、お使いの端末内（ローカルストレージ）にのみ保存され、外部サーバーには送信されません。'],
+      ['広告・解析ツール', '現在、本サービスに広告や外部解析ツールは組み込んでいません。'],
+      ['子どものプライバシー', '本サービスは小学生のお子さまを主な対象としています。個人情報を収集しない設計のため、保護者の方にも安心してご利用いただけます。'],
+      ['外部サイトについて', '図鑑の「Wikipediaで くわしくみる」を押した場合は、外部サイトのWikipediaを開きます。外部サイトでの情報の取り扱いについては、各サイトの方針をご確認ください。'],
+      ['お問い合わせ', 'プライバシーに関するご質問は、運営者noteよりご連絡ください。'],
+      ['最終更新日', '2026年']
+    ]
+  },
+  terms: {
+    title: '利用規約',
+    sections: [
+      ['利用許諾', '本サービスは、個人・教育目的での利用を無償で許可します。商用目的での再配布・販売は禁止します。'],
+      ['知的財産権', '本サービスのコード・デザイン・コンテンツの著作権は開発者に帰属します。無断転載・改変・再配布を禁じます。'],
+      ['対象年齢', '本サービスは小学生（6〜12歳）を主な対象としています。保護者の監督のもとでのご利用を推奨します。'],
+      ['禁止事項', '本サービスのリバースエンジニアリング、不正な手段によるデータ改ざん、他のユーザーへの迷惑行為を禁止します。'],
+      ['利用規約の変更', '本規約は予告なく変更される場合があります。'],
+      ['最終更新日', '2026年']
+    ]
+  },
+  disc: {
+    title: '免責事項',
+    sections: [
+      ['教育内容について', '本サービスに掲載しているむし・小さないきものの生態・情報はできる限り正確を期していますが、内容の正確性・完全性を保証するものではありません。学術的な調査・研究にはご利用いただけません。'],
+      ['学習効果について', '本サービスはゲームを通じた学習補助ツールです。特定の学習効果を保証するものではありません。'],
+      ['損害について', '本サービスの利用により生じた損害について、開発者は一切の責任を負いません。'],
+      ['動作環境', 'すべての端末・ブラウザでの動作を保証するものではありません。'],
+      ['最終更新日', '2026年']
+    ]
+  }
+};
+
+const LegalModal = ({ type, onClose }) => {
+  const data = type ? LEGAL_COPY[type] : null;
+  React.useEffect(() => {
+    if (!data) return;
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [data, onClose]);
+  if (!data) return null;
+
+  return (
+    <div className="legal-modal-ov" role="presentation" onClick={onClose}>
+      <div className="legal-modal" role="dialog" aria-modal="true" aria-label={data.title} onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="legal-modal-close" aria-label="閉じる" onClick={onClose}>×</button>
+        <div className="legal-modal-kicker">ムシ算</div>
+        <h2>{data.title}</h2>
+        <div className="legal-modal-body">
+          {data.sections.map(([heading, body]) => (
+            <section key={heading}>
+              <h3>{heading}</h3>
+              <p>{body}</p>
+            </section>
+          ))}
+        </div>
       </div>
-      <div className="footer-links">
-        <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer">プライバシーポリシー</a>
-        <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer">利用規約</a>
-        <a href="https://mushisan.vercel.app" target="_blank" rel="noreferrer">免責事項</a>
-        <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer">運営者note</a>
-      </div>
-      <small>© 2026 <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer" className="footer-note-link">memetomamoru</a> ｜ ムシ算</small>
     </div>
-  </footer>
-);
+  );
+};
+
+const Footer = () => {
+  const [legalType, setLegalType] = React.useState(null);
+
+  return (
+    <footer>
+      <div className="container footer-inner">
+        <div className="footer-logo">
+          <div className="footer-logo-bug" dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'footer')}}/>
+          <span>ムシ算</span>
+        </div>
+        <div className="footer-links">
+          <button type="button" onClick={() => setLegalType('pp')}>プライバシーポリシー</button>
+          <button type="button" onClick={() => setLegalType('terms')}>利用規約</button>
+          <button type="button" onClick={() => setLegalType('disc')}>免責事項</button>
+          <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer">運営者note</a>
+        </div>
+        <small>© 2026 <a href="https://note.com/memetomamoru" target="_blank" rel="noreferrer" className="footer-note-link">memetomamoru</a> ｜ ムシ算</small>
+      </div>
+      <LegalModal type={legalType} onClose={() => setLegalType(null)} />
+    </footer>
+  );
+};
 
 Object.assign(window, { FAQ, FinalCTA, Footer });
