@@ -174,7 +174,10 @@ button, [role=button] { cursor: pointer !important; }
   min-width: 0;
   font-weight: 900; font-size: 20px;
   color: var(--text-0); text-decoration: none;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+}
+.logo-text {
+  display: inline-flex; align-items: center; line-height: 1;
 }
 .logo-badge {
   width: 38px; height: 38px; border-radius: 10px;
