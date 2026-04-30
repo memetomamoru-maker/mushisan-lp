@@ -7,7 +7,7 @@ const Nav = () => {
       <div className="container nav-inner">
         <a href="#top" className="logo">
           <span className="logo-badge" dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'hero-logo')}} />
-          <span>ムシ算<span className="logo-sub">MUSHISAN</span></span>
+          <span>ムシ算<span className="logo-sub">MUSHIZAN</span></span>
         </a>
         <div className="audience-toggle">
           <button type="button" className={"aud-btn" + (mode==='kid'?' active':'')} onClick={()=>setMode('kid')}>こどもへ</button>
