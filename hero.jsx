@@ -28,90 +28,107 @@ const Nav = () => {
 
 const ForestBg = () => (
   <div className="forest-bg" style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none',zIndex:0}}>
-    {/* Sky */}
-    <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,#0a1e0a 0%,#0d2b0d 40%,#0a1e0a 100%)'}}/>
-    {/* Moon */}
-    <div style={{position:'absolute',top:'6%',left:'58%',width:180,height:180,borderRadius:'50%',background:'radial-gradient(circle,rgba(200,240,200,0.14) 0%,rgba(100,200,100,0.06) 40%,transparent 70%)'}}/>
-    <div style={{position:'absolute',top:'9%',left:'63%',width:72,height:72,borderRadius:'50%',background:'radial-gradient(circle,rgba(220,255,220,0.18) 0%,rgba(180,240,180,0.08) 60%,transparent 100%)'}}/>
-    {/* Stars */}
-    <svg style={{position:'absolute',inset:0,width:'100%',height:'100%'}} viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
-      {[[100,45],[280,28],[520,60],[760,18],[1020,42],[1300,30],[180,105],[420,88],[680,125],[920,72],[1160,110],[55,170],[310,148],[570,182],[800,155],[1040,170],[1260,158]].map(([x,y],i)=>(
-        <circle key={i} cx={x} cy={y} r={i%5===0?1.8:1.1} fill="#a8d8a8" opacity={0.35+i%4*0.1}/>
+    <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,#061508 0%,#08210c 20%,#0b2810 48%,#071707 100%)'}}/>
+    <div style={{position:'absolute',inset:0,background:'radial-gradient(circle at 18% 36%, rgba(84,170,92,0.14) 0%, rgba(84,170,92,0.08) 18%, transparent 42%), radial-gradient(circle at 74% 18%, rgba(120,210,120,0.12) 0%, rgba(120,210,120,0.05) 20%, transparent 48%), radial-gradient(circle at 72% 50%, rgba(160,220,95,0.12) 0%, rgba(160,220,95,0.05) 16%, transparent 44%), linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 34%, rgba(0,0,0,0.18) 100%)'}}/>
+    <div style={{position:'absolute',right:'10%',top:'16%',width:520,height:520,borderRadius:'50%',background:'radial-gradient(circle, rgba(118,214,108,0.16) 0%, rgba(118,214,108,0.08) 22%, rgba(118,214,108,0.03) 38%, transparent 68%)',filter:'blur(2px)'}}/>
+    <div style={{position:'absolute',left:'-8%',top:'20%',width:420,height:420,borderRadius:'50%',background:'radial-gradient(circle, rgba(85,170,94,0.12) 0%, rgba(85,170,94,0.05) 32%, transparent 70%)'}}/>
+    <div style={{position:'absolute',bottom:0,left:0,right:0,height:160,background:'linear-gradient(to top, rgba(6,18,8,0.96) 0%, rgba(6,18,8,0.62) 38%, transparent 100%)'}}/>
+
+    <svg style={{position:'absolute',inset:0,width:'100%',height:'100%'}} viewBox="0 0 1440 780" preserveAspectRatio="none">
+      {[[90,68,1.6,0.55],[220,40,1.4,0.42],[420,84,1.8,0.5],[590,58,1.5,0.36],[760,36,1.8,0.48],[948,66,1.5,0.4],[1160,42,1.8,0.48],[1312,90,1.4,0.34],[170,144,1.2,0.38],[342,118,1.4,0.36],[514,160,1.5,0.4],[714,132,1.2,0.34],[906,146,1.5,0.38],[1088,120,1.2,0.34],[1264,152,1.4,0.36]].map(([x,y,r,op],i)=>(
+        <circle key={i} cx={x} cy={y} r={r} fill="#d8ffd1" opacity={op}/>
       ))}
     </svg>
-    {/* Left tall tree */}
-    <svg style={{position:'absolute',left:-8,bottom:0,width:260,height:'100%'}} viewBox="0 0 180 600" preserveAspectRatio="xMinYMax meet">
-      <rect x="76" y="300" width="22" height="300" rx="5" fill="#1a3a0a"/>
-      <rect x="80" y="300" width="6" height="300" rx="3" fill="#2a5a12" opacity="0.5"/>
-      <path d="M87 305 Q50 265 14 244" stroke="#1a3a0a" strokeWidth="10" fill="none" strokeLinecap="round"/>
-      <path d="M87 350 Q38 315 6 305" stroke="#1a3a0a" strokeWidth="8" fill="none" strokeLinecap="round"/>
-      <path d="M87 280 Q130 245 164 226" stroke="#1a3a0a" strokeWidth="9" fill="none" strokeLinecap="round"/>
-      <path d="M87 328 Q138 296 170 285" stroke="#1a3a0a" strokeWidth="7" fill="none" strokeLinecap="round"/>
-      <ellipse cx="87" cy="218" rx="74" ry="88" fill="#142814"/>
-      <ellipse cx="45" cy="244" rx="52" ry="68" fill="#0f1e0f"/>
-      <ellipse cx="134" cy="230" rx="56" ry="72" fill="#142814"/>
-      <ellipse cx="87" cy="165" rx="58" ry="64" fill="#1a3618"/>
-      <ellipse cx="87" cy="124" rx="44" ry="50" fill="#1e4020"/>
-      <ellipse cx="62" cy="170" rx="26" ry="20" fill="#2d7a2d" opacity="0.35"/>
-      <ellipse cx="118" cy="188" rx="18" ry="14" fill="#2d7a2d" opacity="0.28"/>
-      <ellipse cx="87" cy="116" rx="30" ry="24" fill="#4aaa4a" opacity="0.18"/>
+
+    <svg style={{position:'absolute',inset:0,width:'100%',height:'100%'}} viewBox="0 0 1440 780" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="heroTrailGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#9ee05e" stopOpacity="0"/>
+          <stop offset="20%" stopColor="#9ee05e" stopOpacity="0.18"/>
+          <stop offset="68%" stopColor="#9ee05e" stopOpacity="0.38"/>
+          <stop offset="100%" stopColor="#ffdd62" stopOpacity="0.18"/>
+        </linearGradient>
+        <filter id="heroTrailGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="5"/>
+        </filter>
+      </defs>
+      <path d="M310 278 C470 234 624 236 780 270 C910 300 1006 340 1122 386" fill="none" stroke="url(#heroTrailGrad)" strokeWidth="10" strokeLinecap="round" filter="url(#heroTrailGlow)" opacity="0.55"/>
+      <path d="M310 278 C470 234 624 236 780 270 C910 300 1006 340 1122 386" fill="none" stroke="#9ee05e" strokeWidth="2.8" strokeDasharray="3 14" strokeLinecap="round" opacity="0.72"/>
+      {[ [434,252,6.5,'#cfff76'], [540,250,4.8,'#ffe86e'], [678,258,4.6,'#cfff76'], [860,306,4.4,'#b7ff6f'], [992,352,4.6,'#ffe86e'] ].map(([x,y,r,color],i)=>(
+        <g key={i}>
+          <circle cx={x} cy={y} r={r*2.4} fill={color} opacity="0.12"/>
+          <circle cx={x} cy={y} r={r} fill={color} opacity="0.92"/>
+        </g>
+      ))}
     </svg>
-    {/* Right tall tree */}
-    <svg style={{position:'absolute',right:-8,bottom:0,width:300,height:'100%'}} viewBox="0 0 200 680" preserveAspectRatio="xMaxYMax meet">
-      <rect x="88" y="320" width="24" height="360" rx="5" fill="#162e08"/>
-      <rect x="92" y="320" width="7" height="360" rx="3" fill="#285010" opacity="0.5"/>
-      <path d="M100 325 Q145 278 188 252" stroke="#162e08" strokeWidth="11" fill="none" strokeLinecap="round"/>
-      <path d="M100 372 Q156 332 196 322" stroke="#162e08" strokeWidth="9" fill="none" strokeLinecap="round"/>
-      <path d="M100 295 Q60 258 26 236" stroke="#162e08" strokeWidth="9" fill="none" strokeLinecap="round"/>
-      <path d="M100 346 Q55 314 22 302" stroke="#162e08" strokeWidth="7" fill="none" strokeLinecap="round"/>
-      <ellipse cx="100" cy="220" rx="88" ry="104" fill="#112212"/>
-      <ellipse cx="152" cy="248" rx="60" ry="76" fill="#0e1c0e"/>
-      <ellipse cx="50" cy="234" rx="64" ry="80" fill="#112212"/>
-      <ellipse cx="100" cy="162" rx="64" ry="68" fill="#162e14"/>
-      <ellipse cx="100" cy="118" rx="50" ry="56" fill="#1c3a1a"/>
-      <ellipse cx="132" cy="172" rx="28" ry="22" fill="#2d7a2d" opacity="0.32"/>
-      <ellipse cx="68" cy="194" rx="20" ry="16" fill="#2d7a2d" opacity="0.25"/>
-      <ellipse cx="100" cy="110" rx="34" ry="26" fill="#4aaa4a" opacity="0.16"/>
+
+    <svg style={{position:'absolute',left:'-1%',top:'2%',width:220,height:170,opacity:0.72}} viewBox="0 0 220 170">
+      <g transform="translate(12 10)">
+        <path d="M0 88 C28 20 72 6 134 10 C124 66 90 116 24 124 C10 118 2 106 0 88Z" fill="rgba(162,232,118,0.22)"/>
+        <path d="M18 98 C58 70 92 38 132 12" fill="none" stroke="rgba(26,92,36,0.48)" strokeWidth="4" strokeLinecap="round"/>
+      </g>
+      <g transform="translate(110 0) rotate(24 44 56)">
+        <path d="M0 88 C28 20 72 6 134 10 C124 66 90 116 24 124 C10 118 2 106 0 88Z" fill="rgba(196,255,122,0.18)"/>
+        <path d="M18 98 C58 70 92 38 132 12" fill="none" stroke="rgba(26,92,36,0.42)" strokeWidth="4" strokeLinecap="round"/>
+      </g>
     </svg>
-    {/* Mid-distance tree left */}
-    <svg style={{position:'absolute',left:'20%',bottom:0,width:110,opacity:0.7}} viewBox="0 0 75 380" preserveAspectRatio="xMidYMax meet">
-      <rect x="32" y="210" width="9" height="170" rx="3" fill="#142814"/>
-      <ellipse cx="36" cy="145" rx="34" ry="70" fill="#1a3618"/>
-      <ellipse cx="36" cy="98" rx="26" ry="50" fill="#1e3e1c"/>
+
+    <svg style={{position:'absolute',right:'3%',bottom:'5%',width:250,height:180,opacity:0.6}} viewBox="0 0 250 180">
+      <g transform="translate(76 26) rotate(-20 60 60)">
+        <path d="M0 88 C28 20 72 6 134 10 C124 66 90 116 24 124 C10 118 2 106 0 88Z" fill="rgba(162,232,118,0.18)"/>
+        <path d="M18 98 C58 70 92 38 132 12" fill="none" stroke="rgba(26,92,36,0.4)" strokeWidth="4" strokeLinecap="round"/>
+      </g>
+      <g transform="translate(0 68) rotate(8 60 60)">
+        <path d="M0 88 C28 20 72 6 134 10 C124 66 90 116 24 124 C10 118 2 106 0 88Z" fill="rgba(196,255,122,0.14)"/>
+        <path d="M18 98 C58 70 92 38 132 12" fill="none" stroke="rgba(26,92,36,0.36)" strokeWidth="4" strokeLinecap="round"/>
+      </g>
     </svg>
-    {/* Mid-distance tree right */}
-    <svg style={{position:'absolute',right:'20%',bottom:0,width:90,opacity:0.6}} viewBox="0 0 65 360" preserveAspectRatio="xMidYMax meet">
-      <rect x="28" y="195" width="8" height="165" rx="3" fill="#112210"/>
-      <ellipse cx="32" cy="132" rx="30" ry="65" fill="#162e14"/>
-      <ellipse cx="32" cy="88" rx="22" ry="44" fill="#1a3618"/>
+
+    <svg style={{position:'absolute',left:0,right:0,bottom:0,width:'100%',height:'72%'}} viewBox="0 0 1440 540" preserveAspectRatio="none">
+      <g opacity="0.32">
+        {[[80,284,88,120],[170,260,64,90],[302,294,72,104],[418,258,54,78],[548,286,82,116],[700,246,70,100],[834,284,76,110],[948,254,58,86],[1116,286,86,118],[1264,264,70,96],[1368,296,76,104]].map(([x,y,rx,ry],i)=>(
+          <ellipse key={i} cx={x} cy={y} rx={rx} ry={ry} fill={i%2===0?'#0d220e':'#112813'}/>
+        ))}
+        {[[80,302,20,220],[170,290,14,180],[302,318,18,190],[418,286,12,160],[548,312,22,208],[700,278,16,180],[834,312,18,196],[948,286,13,166],[1116,314,22,210],[1264,292,16,176],[1368,324,18,182]].map(([x,y,w,h],i)=>(
+          <rect key={i} x={x} y={y} width={w} height={h} rx="7" fill="#122012"/>
+        ))}
+      </g>
+      <g opacity="0.58">
+        <path d="M0 420 C120 390 190 392 280 416 C370 440 458 434 550 408 C664 374 720 368 822 392 C930 418 1036 430 1134 410 C1238 390 1338 394 1440 428 L1440 540 L0 540 Z" fill="#081708"/>
+      </g>
+      <g opacity="0.24">
+        {[20,96,170,246,322,398,474,550,626,702,780,856,932,1008,1084,1160,1238,1314,1390].map((x,i)=>(
+          <path key={i} d={`M${x} 540 C${x+6} 474 ${x+4} 412 ${x+10} 350`} stroke="#2c5d23" strokeWidth={i%3===0?5:4} strokeLinecap="round"/>
+        ))}
+      </g>
     </svg>
-    {/* Ground */}
-    <div style={{position:'absolute',bottom:0,left:0,right:0,height:80,background:'linear-gradient(to top,#0a1e0a 0%,rgba(10,30,10,0.7) 50%,transparent 100%)'}}/>
-    {/* Firefly glows */}
-    {[[28,52],[72,42],[15,68],[85,60],[45,75],[60,38]].map(([x,y],i)=>(
-      <div key={i} style={{
-        position:'absolute',left:`${x}%`,top:`${y}%`,
-        width:4,height:4,borderRadius:'50%',
-        background:'#a8d858',
-        boxShadow:`0 0 ${6+i%3*4}px ${3+i%2*2}px rgba(100,220,60,0.5)`,
-        animation:`fireflyPulse ${2+i*0.4}s ease-in-out ${i*0.5}s infinite`,
-      }}/>
+
+    {[['4%','22%',150,0.18],['10%','74%',112,0.14],['88%','10%',136,0.16],['92%','62%',118,0.14]].map(([left,top,size,op],i)=>(
+      <div key={i} style={{position:'absolute',left,top,width:size,height:size,borderRadius:'50%',background:`radial-gradient(circle, rgba(130,210,120,${op}) 0%, rgba(130,210,120,${op*0.55}) 32%, transparent 72%)`}}/>
     ))}
-    {/* Floating insect silhouettes */}
+
     {[
-      {bug:'ageha',    x:'66%',y:'10%',size:60,rot:-15,delay:0,   op:0.28},
-      {bug:'dragonfly',x:'14%',y:'24%',size:52,rot:20, delay:1.5, op:0.22},
-      {bug:'morpho',   x:'78%',y:'50%',size:68,rot:-8, delay:0.8, op:0.25},
+      {bug:'dragonfly',x:'11%',y:'20%',size:42,rot:-8,delay:0.6,op:0.12},
+      {bug:'morpho',x:'78%',y:'12%',size:54,rot:12,delay:1.3,op:0.14},
+      {bug:'ageha',x:'86%',y:'48%',size:48,rot:-14,delay:0.2,op:0.1},
     ].map(({bug,x,y,size,rot,delay,op}) => (
       <div key={bug} style={{
         position:'absolute',left:x,top:y,width:size,height:size,
         transform:`rotate(${rot}deg)`,opacity:op,
-        filter:'brightness(0) invert(0.35) sepia(1) hue-rotate(70deg)',
-        animation:`silhouetteFloat 8s ease-in-out ${delay}s infinite`,
+        filter:'brightness(0) invert(0.6) sepia(1) saturate(0.3) hue-rotate(36deg)',
+        animation:`silhouetteFloat 9s ease-in-out ${delay}s infinite`,
       }} dangerouslySetInnerHTML={{__html: window.getInsectSVG(bug, 'hero-float')}}/>
     ))}
-    {/* Moonlight patches */}
-    <div style={{position:'absolute',top:'8%',left:'38%',width:260,height:260,background:'radial-gradient(circle,rgba(168,216,168,0.07) 0%,transparent 70%)',borderRadius:'50%'}}/>
+
+    {[[22,54,5,'rgba(180,255,120,0.48)','rgba(180,255,120,0.2)'],[34,44,4,'rgba(255,232,110,0.46)','rgba(255,232,110,0.18)'],[49,61,4,'rgba(180,255,120,0.42)','rgba(180,255,120,0.16)'],[62,48,5,'rgba(180,255,120,0.48)','rgba(180,255,120,0.2)'],[71,39,6,'rgba(255,232,110,0.45)','rgba(255,232,110,0.18)'],[82,59,5,'rgba(180,255,120,0.42)','rgba(180,255,120,0.16)']].map(([x,y,size,color,glowColor],i)=>(
+      <div key={i} style={{
+        position:'absolute',left:`${x}%`,top:`${y}%`,
+        width:size,height:size,borderRadius:'50%',
+        background:color,
+        boxShadow:`0 0 ${size*3}px ${size}px ${glowColor}`,
+        animation:`fireflyPulse ${2.4+i*0.45}s ease-in-out ${i*0.3}s infinite`,
+      }}/>
+    ))}
   </div>
 );
 
