@@ -233,12 +233,22 @@ button, [role=button] { cursor: pointer !important; }
   background: rgba(74,125,82,0.35); color: var(--leaf-8);
   border: 1px solid rgba(168,212,174,0.35);
   padding: 6px 14px; border-radius: 999px;
-  font-size: 13px; font-weight: 700; margin-bottom: 20px;
+  font-size: 13px; font-weight: 700; margin-bottom: 16px;
   letter-spacing: 0.04em;
   backdrop-filter: blur(4px);
 }
+.hero-appname {
+  display: flex; align-items: center;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
 .hero h1 {
-  font-size: clamp(42px, 4.8vw, 62px);
+  font-size: clamp(32px, 3.6vw, 48px);
   margin-bottom: 20px; color: #fff;
   text-shadow: 0 2px 24px rgba(0,0,0,0.5);
   white-space: normal;

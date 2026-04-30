@@ -123,6 +123,10 @@ const Hero = () => {
       <div className="container hero-grid" style={{position:'relative',zIndex:1}}>
         <div>
           <span className="hero-kicker">{mode==='kid' ? 'しょうがくせいむけ さんすうゲーム' : '小学生向け 無料算数ゲーム'}</span>
+          <div className="hero-appname">
+            <span dangerouslySetInnerHTML={{__html: window.getInsectSVG('kabuto', 'hero-icon')}} style={{width:40,height:40,display:'inline-block',verticalAlign:'middle',marginRight:10}} />
+            <span>ムシ算</span>
+          </div>
           <h1>
             {mode === 'kid'
               ? <>
